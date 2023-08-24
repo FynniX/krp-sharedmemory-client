@@ -17,10 +17,11 @@ import type {RaceCommunicationInfo} from "../types/RaceCommunicationInfo";
 import type {RaceClassificationInfo} from "../types/RaceClassificationInfo";
 import type {RaceTrackPositionInfo} from "../types/RaceTrackPositionInfo";
 import type {RaceVehicleDataInfo} from "../types/RaceVehicleDataInfo";
+import type {RaceEntriesInfo} from "../types/RaceEntriesInfo";
 
 export interface WrapperEvents {
   connected: () => void
-  disconnected: () => void
+  disconnected: (reason: string) => void
   pluginInfo: (pluginInfo: PluginInfo) => void
   kartEventInfo: (kartEventInfo: KartEventInfo) => void
   kartSessionInfo: (kartSessionInfo: KartSessionInfo) => void
@@ -29,6 +30,7 @@ export interface WrapperEvents {
   kartTelemetryInfo: (kartTelemetryInfo: KartTelemetryInfo) => void
   trackSegmentInfo: (trackSegmentInfo: TrackSegmentInfo) => void
   raceEventInfo: (raceEventInfo: RaceEventInfo) => void
+  raceEntriesInfo: (raceEntriesInfo: RaceEntriesInfo) => void
   raceAddEntryInfo: (raceAddEntryInfo: RaceAddEntryInfo) => void
   raceRemoveEntryInfo: (raceRemoveEntryInfo: RaceRemoveEntryInfo) => void
   raceSessionInfo: (raceSessionInfo: RaceSessionInfo) => void

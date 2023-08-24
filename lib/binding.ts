@@ -17,6 +17,7 @@ import type {RaceCommunicationInfo} from "./types/RaceCommunicationInfo";
 import type {RaceClassificationInfo} from "./types/RaceClassificationInfo";
 import type {RaceTrackPositionInfo} from "./types/RaceTrackPositionInfo";
 import type {RaceVehicleDataInfo} from "./types/RaceVehicleDataInfo";
+import type {RaceEntriesInfo} from "./types/RaceEntriesInfo";
 
 type Addon = {
   connect(): boolean,
@@ -31,6 +32,7 @@ type Addon = {
   listenForKartTelemetryInfo(cb: (err: Error, data: KartTelemetryInfo) => void): null
   listenForTrackSegmentInfo(cb: (err: Error, data: TrackSegmentInfo) => void): null
   listenForRaceEventInfo(cb: (err: Error, data: RaceEventInfo) => void): null
+  listenForRaceEntriesInfo(cb: (err: Error, data: RaceEntriesInfo) => void): null
   listenForRaceAddEntryInfo(cb: (err: Error, data: RaceAddEntryInfo) => void): null
   listenForRaceRemoveEntryInfo(cb: (err: Error, data: RaceRemoveEntryInfo) => void): null
   listenForRaceSessionInfo(cb: (err: Error, data: RaceSessionInfo) => void): null
@@ -118,6 +120,16 @@ async function listenForTrackSegmentInfoPromise(): Promise<TrackSegmentInfo> {
 async function listenForRaceEventInfoPromise(): Promise<RaceEventInfo> {
   return new Promise<RaceEventInfo>((resolve, reject) => {
     addon.listenForRaceEventInfo((err, data) => {
+      if (err) return reject(err);
+      resolve(data);
+    })
+  });
+}
+
+
+async function listenForRaceEntriesInfoPromise(): Promise<RaceEntriesInfo> {
+  return new Promise<RaceEntriesInfo>((resolve, reject) => {
+    addon.listenForRaceEntriesInfo((err, data) => {
       if (err) return reject(err);
       resolve(data);
     })
@@ -244,6 +256,7 @@ export = {
   listenForKartTelemetryInfoPromise,
   listenForTrackSegmentInfoPromise,
   listenForRaceEventInfoPromise,
+  listenForRaceEntriesInfoPromise,
   listenForRaceAddEntryInfoPromise,
   listenForRaceRemoveEntryInfoPromise,
   listenForRaceSessionInfoPromise,

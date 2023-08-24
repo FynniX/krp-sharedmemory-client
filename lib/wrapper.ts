@@ -23,6 +23,7 @@ import type {RaceCommunicationInfo} from "./types/RaceCommunicationInfo";
 import type {RaceClassificationInfo} from "./types/RaceClassificationInfo";
 import type {RaceTrackPositionInfo} from "./types/RaceTrackPositionInfo";
 import type {RaceVehicleDataInfo} from "./types/RaceVehicleDataInfo";
+import type {RaceEntriesInfo} from "./types/RaceEntriesInfo";
 
 class Wrapper extends TypedEmitter<WrapperEvents> {
   public activated: boolean = false;
@@ -37,6 +38,7 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
   public kartTelemetryInfo: KartTelemetryInfo | null = null;
   public trackSegmentInfo: TrackSegmentInfo | null = null;
   public raceEventInfo: RaceEventInfo | null = null;
+  public raceEntriesInfo: RaceEntriesInfo | null = null;
   public raceAddEntryInfo: RaceAddEntryInfo | null = null;
   public raceRemoveEntryInfo: RaceRemoveEntryInfo | null = null;
   public raceSessionInfo: RaceSessionInfo | null = null;
@@ -56,8 +58,8 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
     this.config = Config;
 
     // Needs 19 threads at least to work
-    if (!process.env.UV_THREADPOOL_SIZE || Number(process.env.UV_THREADPOOL_SIZE) < 19) {
-      this.logging && console.error('UV_THREADPOOL_SIZE needs to be higher than 19!')
+    if (!process.env.UV_THREADPOOL_SIZE || Number(process.env.UV_THREADPOOL_SIZE) < 20) {
+      this.logging && console.error('UV_THREADPOOL_SIZE needs to be higher than 20!')
       return
     }
 
@@ -82,6 +84,7 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
     this.kartTelemetryInfo = null
     this.trackSegmentInfo = null
     this.raceEventInfo = null
+    this.raceEntriesInfo = null
     this.raceAddEntryInfo = null
     this.raceRemoveEntryInfo = null
     this.raceSessionInfo = null
@@ -119,6 +122,7 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
       this.updateKartTelemetryInfo()
       this.updateTrackSegmentInfo()
       this.updateRaceEventInfo()
+      this.updateRaceEntriesInfo()
       this.updateRaceAddEntryInfo()
       this.updateRaceRemoveEntryInfo()
       this.updateRaceSessionInfo()
@@ -137,10 +141,10 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
     setTimeout(this.connect.bind(this), this.config.Delays.ConnectDelay)
   }
 
-  private disconnect() {
+  private disconnect(reason: string = '') {
     addon.disconnect()
     this.logging && console.log("DISCONNECTED")
-    this.emit('disconnected')
+    this.emit('disconnected', reason)
     if (!this.activated) return
     this.connect();
   }
@@ -153,6 +157,12 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
     this.emit('pluginInfo', this.pluginInfo)
     if (this.pluginInfo.m_iState === -1) {
       this.disconnect();
+      return
+    }
+
+    if(this.pluginInfo.m_PluginVersion < 2) {
+      this.logging && console.error("Plugin version is smaller then 2!")
+      this.disconnect("Plugin version is smaller then 2!");
       return
     }
 
@@ -245,6 +255,19 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
       this.raceEventInfo = await addon.listenForRaceEventInfoPromise();
       this.emit('raceEventInfo', this.raceEventInfo)
       setTimeout(this.updateRaceEventInfo.bind(this), this.config.Delays.UpdateDelay)
+    } catch (e) {
+      this.logging && console.error(e)
+    }
+  }
+
+  private async updateRaceEntriesInfo() {
+    if (!this.activated) return
+    if (!this.isConnected()) return
+
+    try {
+      this.raceEntriesInfo = await addon.listenForRaceEntriesInfoPromise();
+      this.emit('raceEntriesInfo', this.raceEntriesInfo)
+      setTimeout(this.updateRaceEntriesInfo.bind(this), this.config.Delays.UpdateDelay)
     } catch (e) {
       this.logging && console.error(e)
     }

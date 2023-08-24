@@ -7,7 +7,7 @@ Node.js Wrapper to communicate with [Kart Racing Pro](https://www.kartracing-pro
 ## Requirements
 
 - [krp-sharedmemory-plugin](https://github.com/FynniX/krp-sharedmemory-plugin)
-- Environmental Variable **UV_THREADPOOL_SIZE** needs to be higher than 19!
+- Environmental Variable **UV_THREADPOOL_SIZE** needs to be higher than 20!
 
 ## Installing
 

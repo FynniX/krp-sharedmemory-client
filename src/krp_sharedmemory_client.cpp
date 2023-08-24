@@ -12,6 +12,7 @@
 #include "KartTelemetryInfo.h"
 #include "TrackSegmentInfo.h"
 #include "RaceEventInfo.h"
+#include "RaceEntriesInfo.h"
 #include "RaceAddEntryInfo.h"
 #include "RaceRemoveEntryInfo.h"
 #include "RaceSessionInfo.h"
@@ -31,6 +32,7 @@
 #include "KartTelemetryInfoWorker.h"
 #include "TrackSegmentInfoWorker.h"
 #include "RaceEventInfoWorker.h"
+#include "RaceEntriesInfoWorker.h"
 #include "RaceAddEntryInfoWorker.h"
 #include "RaceRemoveEntryInfoWorker.h"
 #include "RaceSessionInfoWorker.h"
@@ -53,6 +55,7 @@ KartSplitInfo kartSplitInfo;
 KartTelemetryInfo kartTelemetryInfo;
 TrackSegmentInfo trackSegmentInfo;
 RaceEventInfo raceEventInfo;
+RaceEntriesInfo raceEntriesInfo;
 RaceAddEntryInfo raceAddEntryInfo;
 RaceRemoveEntryInfo raceRemoveEntryInfo;
 RaceSessionInfo raceSessionInfo;
@@ -78,6 +81,7 @@ Napi::Boolean Connect(const Napi::CallbackInfo &info) {
         kartTelemetryInfo.connect();
         trackSegmentInfo.connect();
         raceEventInfo.connect();
+        raceEntriesInfo.connect();
         raceAddEntryInfo.connect();
         raceRemoveEntryInfo.connect();
         raceSessionInfo.connect();
@@ -105,6 +109,7 @@ Napi::Value Disconnect(const Napi::CallbackInfo &info) {
     kartTelemetryInfo.disconnect();
     trackSegmentInfo.disconnect();
     raceEventInfo.disconnect();
+    raceEntriesInfo.disconnect();
     raceAddEntryInfo.disconnect();
     raceRemoveEntryInfo.disconnect();
     raceSessionInfo.disconnect();
@@ -136,6 +141,7 @@ Napi::Value SetWaitDelay(const Napi::CallbackInfo &info) {
     kartTelemetryInfo.waitDelay = info[0].ToNumber().Int32Value();
     trackSegmentInfo.waitDelay = info[0].ToNumber().Int32Value();
     raceEventInfo.waitDelay = info[0].ToNumber().Int32Value();
+    raceEntriesInfo.waitDelay = info[0].ToNumber().Int32Value();
     raceAddEntryInfo.waitDelay = info[0].ToNumber().Int32Value();
     raceRemoveEntryInfo.waitDelay = info[0].ToNumber().Int32Value();
     raceSessionInfo.waitDelay = info[0].ToNumber().Int32Value();
@@ -216,6 +222,15 @@ Napi::Value ListenForRaceEventInfo(const Napi::CallbackInfo &info) {
     Napi::Env env = info.Env();
     Napi::Function callback = info[0].As<Napi::Function>();
     RaceEventInfoWorker *worker = new RaceEventInfoWorker(callback, raceEventInfo);
+    worker->Queue();
+    return env.Null();
+}
+
+
+Napi::Value ListenForRaceEntriesInfo(const Napi::CallbackInfo &info) {
+    Napi::Env env = info.Env();
+    Napi::Function callback = info[0].As<Napi::Function>();
+    RaceEntriesInfoWorker *worker = new RaceEntriesInfoWorker(callback, raceEntriesInfo);
     worker->Queue();
     return env.Null();
 }
@@ -334,6 +349,8 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
     exports.Set(Napi::String::New(env, "listenForTrackSegmentInfo"),
                 Napi::Function::New(env, ListenForTrackSegmentInfo));
     exports.Set(Napi::String::New(env, "listenForRaceEventInfo"), Napi::Function::New(env, ListenForRaceEventInfo));
+    exports.Set(Napi::String::New(env, "listenForRaceEntriesInfo"),
+                Napi::Function::New(env, ListenForRaceEntriesInfo));
     exports.Set(Napi::String::New(env, "listenForRaceAddEntryInfo"),
                 Napi::Function::New(env, ListenForRaceAddEntryInfo));
     exports.Set(Napi::String::New(env, "listenForRaceRemoveEntryInfo"),
@@ -355,4 +372,5 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
     return exports;
 }
 
-NODE_API_MODULE(addon, Init)
+NODE_API_MODULE(addon, Init
+)

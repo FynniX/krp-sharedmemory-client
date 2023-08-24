@@ -20,6 +20,8 @@ assert(addon.listenForTrackSegmentInfo, "listenForTrackSegmentInfo function is u
 assert(addon.listenForTrackSegmentInfoPromise, "listenForTrackSegmentInfoPromise function is undefined");
 assert(addon.listenForRaceEventInfo, "listenForRaceEventInfo function is undefined");
 assert(addon.listenForRaceEventInfoPromise, "listenForRaceEventInfoPromise function is undefined");
+assert(addon.listenForRaceEntriesInfo, "listenForRaceEntriesInfo function is undefined");
+assert(addon.listenForRaceEntriesInfoPromise, "listenForRaceEntriesInfoPromise function is undefined");
 assert(addon.listenForRaceAddEntryInfo, "listenForRaceAddEntryInfo function is undefined");
 assert(addon.listenForRaceAddEntryInfoPromise, "listenForRaceAddEntryInfoPromise function is undefined");
 assert(addon.listenForRaceRemoveEntryInfo, "listenForRaceRemoveEntryInfo function is undefined");
