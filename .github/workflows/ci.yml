@@ -1,0 +1,32 @@
+name: CI
+
+on:
+    push:
+      branches:
+      - main
+    pull_request:
+      branches:
+      - main
+
+jobs:
+    prebuild:
+        runs-on: windows-2019
+
+        steps:
+            - uses: actions/checkout@v3
+      
+            - uses: actions/setup-node@v3
+              with:
+                node-version: 18
+                cache: 'npm'
+
+            - name: Setup environment
+              run: npm install
+
+            - name: Prebuild addon
+              run: npm run prebuild
+
+            - name: Prebuild upload
+              run: npm run prebuild-upload
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
