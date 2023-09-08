@@ -11,8 +11,7 @@
     "install": "(prebuild-install || node-gyp rebuild) && tsc",
     "test": "cross-env UV_THREADPOOL_SIZE=32 node --napi-modules ./test/test_binding.js",
     "clean": "node-gyp clean",
-    "prebuild": "prebuild -t 3 -r napi -a x64 --strip",
-    "prebuild-upload": "prebuild --upload-all -u %GITHUB_TOKEN%"
+    "prebuild": "prebuild -t 3 -r napi -a x64 --strip"
   },
   "repository": {
     "type": "git",
