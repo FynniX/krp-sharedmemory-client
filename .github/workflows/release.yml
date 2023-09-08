@@ -1,12 +1,8 @@
-name: CI
+name: Release
 
 on:
-    push:
-      branches:
-      - main
-    pull_request:
-      branches:
-      - main
+  push:
+    tags: ['*']
 
 jobs:
     prebuild:
@@ -27,6 +23,4 @@ jobs:
               run: npm run prebuild
 
             - name: Prebuild upload
-              run: npm run prebuild-upload
-              env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: prebuild --upload-all -u ${{ secrets.GITHUB_TOKEN }}
