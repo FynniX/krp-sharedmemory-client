@@ -23,7 +23,9 @@ jobs:
               run: npm run prebuild
 
             - name: Prebuild upload
-              run: node_modules/.bin/prebuild.cmd --upload-all -u ${{ secrets.GH_TOKEN }}
+              run: npm run upload
+              env:
+                GITHUB_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     publish:
         runs-on: windows-2019
