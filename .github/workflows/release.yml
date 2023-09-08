@@ -23,7 +23,7 @@ jobs:
               run: npm run prebuild
 
             - name: Prebuild upload
-              run: npm run upload
+              run: npm run prebuild-upload
               env:
                 GITHUB_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
