@@ -12,7 +12,7 @@
     "test": "cross-env UV_THREADPOOL_SIZE=32 node --napi-modules ./test/test_binding.js",
     "clean": "node-gyp clean",
     "prebuild": "prebuild -t 3 -r napi -a x64 --strip",
-    "prebuild-upload": "node ./script/upload.js"
+    "prebuild-upload": "node ./scripts/upload.js"
   },
   "repository": {
     "type": "git",
