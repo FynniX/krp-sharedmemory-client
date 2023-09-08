@@ -1,34 +1,40 @@
 {
-    "name": "krp-sharedmemory-client",
-    "version": "1.0.3",
-    "description": "",
-    "author": "Fynn Haupt",
-    "license": "MIT",
-    "main": "dist/wrapper.js",
-    "types": "dist/wrapper.d.ts",
-    "gypfile": true,
-    "scripts": {
-        "install": "(prebuild-install || npm run build) && tsc",
-        "test": "cross-env UV_THREADPOOL_SIZE=32 node --napi-modules ./test/test_binding.js",
-        "build": "node-gyp rebuild",
-        "clean": "node-gyp clean",
-        "prebuild": "prebuild -t 3 -r napi -a x64 --strip",
-        "prebuild-upload": "prebuild --upload-all -u %GITHUB_TOKEN%"
-    },
-    "binary": {
-        "napi_versions": [
-            3
-        ]
-      },
-    "devDependencies": {
-        "@types/node": "^20.2.5",
-        "cross-env": "^7.0.3",
-        "prebuild": "^11.0.2",
-        "typescript": "^5.1.3"
-    },
-    "dependencies": {
-        "node-addon-api": "^6.1.0",
-        "prebuild-install": "^7.1.1",
-        "tiny-typed-emitter": "^2.1.0"
-    }
+  "name": "krp-sharedmemory-client",
+  "version": "1.0.3",
+  "description": "",
+  "author": "Fynn Haupt",
+  "license": "MIT",
+  "main": "dist/wrapper.js",
+  "types": "dist/wrapper.d.ts",
+  "gypfile": true,
+  "scripts": {
+    "install": "(prebuild-install || node-gyp rebuild) && tsc",
+    "test": "cross-env UV_THREADPOOL_SIZE=32 node --napi-modules ./test/test_binding.js",
+    "clean": "node-gyp clean",
+    "prebuild": "prebuild -t 3 -r napi -a x64 --strip",
+    "prebuild-upload": "prebuild --upload-all -u %GITHUB_TOKEN%"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FynniX/krp-sharedmemory-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FynniX/krp-sharedmemory-client/issues"
+  },
+  "binary": {
+    "napi_versions": [
+      3
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.5",
+    "cross-env": "^7.0.3",
+    "prebuild": "^11.0.2",
+    "typescript": "^5.1.3"
+  },
+  "dependencies": {
+    "node-addon-api": "^6.1.0",
+    "prebuild-install": "^7.1.1",
+    "tiny-typed-emitter": "^2.1.0"
+  }
 }
