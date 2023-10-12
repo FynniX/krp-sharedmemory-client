@@ -160,9 +160,9 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
       return
     }
 
-    if(this.pluginInfo.m_PluginVersion < 2) {
-      this.logging && console.error("Plugin version is smaller then 2!")
-      this.disconnect("Plugin version is smaller then 2!");
+    if(this.pluginInfo.m_PluginVersion < 5) {
+      this.logging && console.error("Plugin version is smaller then 5!")
+      this.disconnect("Plugin version is smaller then 5!");
       return
     }
 
@@ -418,3 +418,10 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
 }
 
 export default Wrapper;
+
+const wrapper = new Wrapper(false)
+wrapper.on('raceClassificationInfo', (raceClassificationInfo) => {
+  console.log(raceClassificationInfo.m_RaceEntries[0].m_LastLap)
+})
+
+wrapper.activate()
