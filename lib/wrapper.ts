@@ -146,7 +146,7 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
     this.logging && console.log("DISCONNECTED")
     this.emit('disconnected', reason)
     if (!this.activated) return
-    this.connect();
+    setTimeout(() => this.connect(), this.config.Delays.ReconnectDelay)
   }
 
   private async keepAlive() {
