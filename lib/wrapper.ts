@@ -418,10 +418,3 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
 }
 
 export default Wrapper;
-
-const wrapper = new Wrapper(false)
-wrapper.on('raceClassificationInfo', (raceClassificationInfo) => {
-  console.log(raceClassificationInfo.m_RaceEntries[0].m_LastLap)
-})
-
-wrapper.activate()
