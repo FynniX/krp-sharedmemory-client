@@ -160,9 +160,9 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
       return
     }
 
-    if(this.pluginInfo.m_PluginVersion < 9) {
-      this.logging && console.error("Plugin version is smaller then 9!")
-      this.disconnect("Plugin version is smaller then 9!");
+    if(this.pluginInfo.m_PluginVersion < 10) {
+      this.logging && console.error("Plugin version is smaller then 10!")
+      this.disconnect("Plugin version is smaller then 10!");
       return
     }
 
