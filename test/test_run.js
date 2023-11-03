@@ -9,3 +9,5 @@ const krp = new wrapper.default(false, {
     WaitDelay: 10,
   },
 });
+
+krp.activate()
