@@ -18,6 +18,7 @@ import type {RaceClassificationInfo} from "./types/RaceClassificationInfo";
 import type {RaceTrackPositionInfo} from "./types/RaceTrackPositionInfo";
 import type {RaceVehicleDataInfo} from "./types/RaceVehicleDataInfo";
 import type {RaceEntriesInfo} from "./types/RaceEntriesInfo";
+import type { CameraInfo } from "./types/CameraInfo";
 
 type Addon = {
   connect(): boolean,
@@ -44,6 +45,10 @@ type Addon = {
   listenForRaceClassificationInfo(cb: (err: Error, data: RaceClassificationInfo) => void): null
   listenForRaceTrackPositionInfo(cb: (err: Error, data: RaceTrackPositionInfo) => void): null
   listenForRaceVehicleDataInfo(cb: (err: Error, data: RaceVehicleDataInfo) => void): null
+  listenForCameraInfo(cb: (err: Error, data: CameraInfo) => void): null
+  setIsControlled(isControlled: number): null
+  setSelectedVehicle(SetSelectedVehicle: number): null
+  setSelectedCamera(selectedCamera: number): null
 }
 
 const addon: Addon = require('../build/Release/krp-sharedmemory-client-native');
@@ -246,6 +251,15 @@ async function listenForRaceVehicleDataInfoPromise(): Promise<RaceVehicleDataInf
   });
 }
 
+async function listenForCameraInfoPromise(): Promise<CameraInfo> {
+  return new Promise<CameraInfo>((resolve, reject) => {
+    addon.listenForCameraInfo((err, data) => {
+      if (err) return reject(err);
+      resolve(data);
+    })
+  });
+}
+
 export = {
   ...addon,
   listenForPluginInfoPromise,
@@ -267,6 +281,7 @@ export = {
   listenForRaceCommunicationInfoPromise,
   listenForRaceClassificationInfoPromise,
   listenForRaceTrackPositionInfoPromise,
-  listenForRaceVehicleDataInfoPromise
+  listenForRaceVehicleDataInfoPromise,
+  listenForCameraInfoPromise
 }
 

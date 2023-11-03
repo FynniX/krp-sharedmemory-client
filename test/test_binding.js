@@ -44,6 +44,8 @@ assert(addon.listenForRaceTrackPositionInfo, "listenForRaceTrackPositionInfo fun
 assert(addon.listenForRaceTrackPositionInfoPromise, "listenForRaceTrackPositionInfoPromise function is undefined");
 assert(addon.listenForRaceVehicleDataInfo, "listenForRaceVehicleDataInfo function is undefined");
 assert(addon.listenForRaceVehicleDataInfoPromise, "listenForRaceVehicleDataInfoPromise function is undefined");
+assert(addon.listenForCameraInfo, "listenForCameraInfo function is undefined");
+assert(addon.listenForCameraInfoPromise, "listenForCameraInfoPromise function is undefined");
 
 async function tests() {
     const isConnectedResult1 = addon.isConnected();

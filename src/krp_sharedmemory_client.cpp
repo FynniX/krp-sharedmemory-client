@@ -24,6 +24,7 @@
 #include "RaceClassificationInfo.h"
 #include "RaceTrackPositionInfo.h"
 #include "RaceVehicleDataInfo.h"
+#include "CameraInfo.h"
 #include "PluginInfoWorker.h"
 #include "KartEventInfoWorker.h"
 #include "KartSessionInfoWorker.h"
@@ -44,6 +45,8 @@
 #include "RaceClassificationInfoWorker.h"
 #include "RaceTrackPositionInfoWorker.h"
 #include "RaceVehicleDataInfoWorker.h"
+#include "CameraInfoWorker.h"
+#include "CameraSet.h"
 
 using namespace std;
 
@@ -67,6 +70,8 @@ RaceCommunicationInfo raceCommunicationInfo;
 RaceClassificationInfo raceClassificationInfo;
 RaceTrackPositionInfo raceTrackPositionInfo;
 RaceVehicleDataInfo raceVehicleDataInfo;
+CameraInfo cameraInfo;
+CameraSet cameraSet;
 
 Napi::Boolean Connect(const Napi::CallbackInfo &info) {
     Napi::Env env = info.Env();
@@ -93,6 +98,8 @@ Napi::Boolean Connect(const Napi::CallbackInfo &info) {
         raceClassificationInfo.connect();
         raceTrackPositionInfo.connect();
         raceVehicleDataInfo.connect();
+        cameraInfo.connect();
+        cameraSet.connect();
     }
 
     return Napi::Boolean::New(env, pluginInfo.isConnected);
@@ -121,6 +128,8 @@ Napi::Value Disconnect(const Napi::CallbackInfo &info) {
     raceClassificationInfo.disconnect();
     raceTrackPositionInfo.disconnect();
     raceVehicleDataInfo.disconnect();
+    cameraInfo.disconnect();
+    cameraSet.disconnect();
 
     return env.Null();
 }
@@ -153,6 +162,7 @@ Napi::Value SetWaitDelay(const Napi::CallbackInfo &info) {
     raceClassificationInfo.waitDelay = info[0].ToNumber().Int32Value();
     raceTrackPositionInfo.waitDelay = info[0].ToNumber().Int32Value();
     raceVehicleDataInfo.waitDelay = info[0].ToNumber().Int32Value();
+    cameraInfo.waitDelay = info[0].ToNumber().Int32Value();
 
     return env.Null();
 }
@@ -334,6 +344,32 @@ Napi::Value ListenForRaceVehicleDataInfo(const Napi::CallbackInfo &info) {
     return env.Null();
 }
 
+Napi::Value ListenForCameraInfo(const Napi::CallbackInfo &info) {
+    Napi::Env env = info.Env();
+    Napi::Function callback = info[0].As<Napi::Function>();
+    CameraInfoWorker *worker = new CameraInfoWorker(callback, cameraInfo);
+    worker->Queue();
+    return env.Null();
+}
+
+Napi::Value SetIsControlled(const Napi::CallbackInfo &info) {
+    Napi::Env env = info.Env();
+    cameraSet.setIsControlled(info[0].ToNumber().Int32Value());
+    return env.Null();
+}
+
+Napi::Value SetSelectedVehicle(const Napi::CallbackInfo &info) {
+    Napi::Env env = info.Env();
+    cameraSet.setSelectedVehicle(info[0].ToNumber().Int32Value());
+    return env.Null();
+}
+
+Napi::Value SetSelectedCamera(const Napi::CallbackInfo &info) {
+    Napi::Env env = info.Env();
+    cameraSet.setSelectedCamera(info[0].ToNumber().Int32Value());
+    return env.Null();
+}
+
 Napi::Object Init(Napi::Env env, Napi::Object exports) {
     exports.Set(Napi::String::New(env, "connect"), Napi::Function::New(env, Connect));
     exports.Set(Napi::String::New(env, "disconnect"), Napi::Function::New(env, Disconnect));
@@ -369,6 +405,14 @@ Napi::Object Init(Napi::Env env, Napi::Object exports) {
                 Napi::Function::New(env, ListenForRaceTrackPositionInfo));
     exports.Set(Napi::String::New(env, "listenForRaceVehicleDataInfo"),
                 Napi::Function::New(env, ListenForRaceVehicleDataInfo));
+    exports.Set(Napi::String::New(env, "listenForCameraInfo"),
+                Napi::Function::New(env, ListenForCameraInfo));
+    exports.Set(Napi::String::New(env, "setIsControlled"),
+                Napi::Function::New(env, SetIsControlled));
+    exports.Set(Napi::String::New(env, "setSelectedVehicle"),
+                Napi::Function::New(env, SetSelectedVehicle));
+    exports.Set(Napi::String::New(env, "setSelectedCamera"),
+                Napi::Function::New(env, SetSelectedCamera));
     return exports;
 }
 

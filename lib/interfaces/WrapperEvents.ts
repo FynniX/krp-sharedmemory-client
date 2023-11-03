@@ -18,6 +18,7 @@ import type {RaceClassificationInfo} from "../types/RaceClassificationInfo";
 import type {RaceTrackPositionInfo} from "../types/RaceTrackPositionInfo";
 import type {RaceVehicleDataInfo} from "../types/RaceVehicleDataInfo";
 import type {RaceEntriesInfo} from "../types/RaceEntriesInfo";
+import { CameraInfo } from "../types/CameraInfo";
 
 export interface WrapperEvents {
   connected: () => void
@@ -42,4 +43,5 @@ export interface WrapperEvents {
   raceClassificationInfo: (raceClassificationInfo: RaceClassificationInfo) => void
   raceTrackPositionInfo: (raceTrackPositionInfo: RaceTrackPositionInfo) => void
   raceVehicleDataInfo: (raceVehicleDataInfo: RaceVehicleDataInfo) => void
+  cameraInfo: (cameraInfo: CameraInfo) => void
 }

@@ -1,29 +1,30 @@
 import addon from './binding';
-import {Config, DefaultConfig} from "./config";
+import { Config, DefaultConfig } from "./config";
 
-import {TypedEmitter} from 'tiny-typed-emitter';
-import {WrapperEvents} from "./interfaces/WrapperEvents";
+import { TypedEmitter } from 'tiny-typed-emitter';
+import { WrapperEvents } from "./interfaces/WrapperEvents";
 
-import type {PluginInfo} from "./types/PluginInfo";
-import type {KartEventInfo} from "./types/KartEventInfo";
-import type {KartSessionInfo} from "./types/KartSessionInfo";
-import type {KartLapInfo} from "./types/KartLapInfo";
-import type {KartSplitInfo} from "./types/KartSplitInfo";
-import type {KartTelemetryInfo} from "./types/KartTelemetryInfo";
-import type {TrackSegmentInfo} from "./types/TrackSegmentInfo";
-import type {RaceEventInfo} from "./types/RaceEventInfo";
-import type {RaceAddEntryInfo} from "./types/RaceAddEntryInfo";
-import type {RaceRemoveEntryInfo} from "./types/RaceRemoveEntryInfo";
-import type {RaceSessionInfo} from "./types/RaceSessionInfo";
-import type {RaceSessionStateInfo} from "./types/RaceSessionStateInfo";
-import type {RaceLapInfo} from "./types/RaceLapInfo";
-import type {RaceSplitInfo} from "./types/RaceSplitInfo";
-import type {RaceSpeedInfo} from "./types/RaceSpeedInfo";
-import type {RaceCommunicationInfo} from "./types/RaceCommunicationInfo";
-import type {RaceClassificationInfo} from "./types/RaceClassificationInfo";
-import type {RaceTrackPositionInfo} from "./types/RaceTrackPositionInfo";
-import type {RaceVehicleDataInfo} from "./types/RaceVehicleDataInfo";
-import type {RaceEntriesInfo} from "./types/RaceEntriesInfo";
+import type { PluginInfo } from "./types/PluginInfo";
+import type { KartEventInfo } from "./types/KartEventInfo";
+import type { KartSessionInfo } from "./types/KartSessionInfo";
+import type { KartLapInfo } from "./types/KartLapInfo";
+import type { KartSplitInfo } from "./types/KartSplitInfo";
+import type { KartTelemetryInfo } from "./types/KartTelemetryInfo";
+import type { TrackSegmentInfo } from "./types/TrackSegmentInfo";
+import type { RaceEventInfo } from "./types/RaceEventInfo";
+import type { RaceAddEntryInfo } from "./types/RaceAddEntryInfo";
+import type { RaceRemoveEntryInfo } from "./types/RaceRemoveEntryInfo";
+import type { RaceSessionInfo } from "./types/RaceSessionInfo";
+import type { RaceSessionStateInfo } from "./types/RaceSessionStateInfo";
+import type { RaceLapInfo } from "./types/RaceLapInfo";
+import type { RaceSplitInfo } from "./types/RaceSplitInfo";
+import type { RaceSpeedInfo } from "./types/RaceSpeedInfo";
+import type { RaceCommunicationInfo } from "./types/RaceCommunicationInfo";
+import type { RaceClassificationInfo } from "./types/RaceClassificationInfo";
+import type { RaceTrackPositionInfo } from "./types/RaceTrackPositionInfo";
+import type { RaceVehicleDataInfo } from "./types/RaceVehicleDataInfo";
+import type { RaceEntriesInfo } from "./types/RaceEntriesInfo";
+import { CameraInfo } from './types/CameraInfo';
 
 class Wrapper extends TypedEmitter<WrapperEvents> {
   public activated: boolean = false;
@@ -50,6 +51,7 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
   public raceClassificationInfo: RaceClassificationInfo | null = null;
   public raceTrackPositionInfo: RaceTrackPositionInfo | null = null;
   public raceVehicleDataInfo: RaceVehicleDataInfo | null = null;
+  public cameraInfo: CameraInfo | null = null;
 
   constructor(logging: boolean, Config: Config = DefaultConfig) {
     super();
@@ -57,9 +59,9 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
     this.logging = logging;
     this.config = Config;
 
-    // Needs 19 threads at least to work
-    if (!process.env.UV_THREADPOOL_SIZE || Number(process.env.UV_THREADPOOL_SIZE) < 20) {
-      this.logging && console.error('UV_THREADPOOL_SIZE needs to be higher than 20!')
+    // Needs 21 threads at least to work
+    if (!process.env.UV_THREADPOOL_SIZE || Number(process.env.UV_THREADPOOL_SIZE) < 21) {
+      this.logging && console.error('UV_THREADPOOL_SIZE needs to be higher than 21!')
       return
     }
 
@@ -96,6 +98,7 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
     this.raceClassificationInfo = null
     this.raceTrackPositionInfo = null
     this.raceVehicleDataInfo = null
+    this.cameraInfo = null
 
     if (this.isConnected())
       this.disconnect();
@@ -134,6 +137,7 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
       this.updateRaceClassificationInfo()
       this.updateRaceTrackPositionInfo()
       this.updateRaceVehicleDataInfo()
+      this.updateCameraInfo()
 
       return;
     }
@@ -160,9 +164,9 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
       return
     }
 
-    if(this.pluginInfo.m_PluginVersion < 10) {
-      this.logging && console.error("Plugin version is smaller then 10!")
-      this.disconnect("Plugin version is smaller then 10!");
+    if (this.pluginInfo.m_PluginVersion < 11) {
+      this.logging && console.error("Plugin version is smaller then 11!")
+      this.disconnect("Plugin version is smaller then 11!");
       return
     }
 
@@ -414,6 +418,42 @@ class Wrapper extends TypedEmitter<WrapperEvents> {
     } catch (e) {
       this.logging && console.error(e)
     }
+  }
+
+  private async updateCameraInfo() {
+    if (!this.activated) return
+    if (!this.isConnected()) return
+
+    try {
+      this.cameraInfo = await addon.listenForCameraInfoPromise();
+      this.emit('cameraInfo', this.cameraInfo)
+      setTimeout(this.updateCameraInfo.bind(this), this.config.Delays.UpdateDelay)
+    } catch (e) {
+      this.logging && console.error(e)
+    }
+  }
+
+  public spectateVehicle(index: number) {
+    if (!this.activated) return
+    if (!this.isConnected()) return
+
+    addon.setIsControlled(1);
+    addon.setSelectedVehicle(index);
+    addon.setSelectedCamera(0);
+  }
+
+  public spectateCamera(index: number) {
+    if (!this.activated) return
+    if (!this.isConnected()) return
+
+    addon.setIsControlled(1);
+    addon.setSelectedCamera(index);
+  }
+
+  public spectateStop() {
+    if (!this.activated) return
+    if (!this.isConnected()) return
+    addon.setIsControlled(0);
   }
 }
 

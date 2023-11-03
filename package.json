@@ -1,6 +1,6 @@
 {
   "name": "krp-sharedmemory-client",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "",
   "author": "Fynn Haupt",
   "license": "MIT",
@@ -10,6 +10,7 @@
   "scripts": {
     "install": "(prebuild-install || node-gyp rebuild) && tsc",
     "test": "cross-env UV_THREADPOOL_SIZE=32 node --napi-modules ./test/test_binding.js",
+    "test:run": "cross-env UV_THREADPOOL_SIZE=32 node --napi-modules ./test/test_run.js",
     "clean": "node-gyp clean",
     "prebuild": "prebuild -t 3 -r napi -a x64 --strip",
     "prebuild-upload": "node ./scripts/upload.js"
