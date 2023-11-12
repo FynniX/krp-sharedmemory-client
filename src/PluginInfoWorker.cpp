@@ -28,6 +28,7 @@ void PluginInfoWorker::OnOK() {
     Napi::Object obj = Napi::Object::New(Env());
     obj.Set("m_id", pluginInfo.m_id);
     obj.Set("m_iState", pluginInfo.m_iState);
+    obj.Set("m_iState2", pluginInfo.m_iState2);
     obj.Set("m_PluginRate", pluginInfo.m_PluginRate);
     obj.Set("m_PluginVersion", pluginInfo.m_PluginVersion);
     obj.Freeze();
