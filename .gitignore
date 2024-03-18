@@ -1,6 +1,4 @@
-.idea
-build/
-dist/
 node_modules/
-codealike.json
+build/
 prebuilds/
+codealike.json

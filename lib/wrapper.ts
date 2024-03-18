@@ -1,460 +1,311 @@
-import addon from './binding';
-import { Config, DefaultConfig } from "./config";
+import { TypedEmitter } from "tiny-typed-emitter";
+import { Events } from "./interfaces/Events";
 
-import { TypedEmitter } from 'tiny-typed-emitter';
-import { WrapperEvents } from "./interfaces/WrapperEvents";
+import { KartEventInfo } from "./interfaces/SharedFileOut/KartEventInfo";
+import { KartLapsInfo } from "./interfaces/SharedFileOut/KartLapsInfo";
+import { KartSessionInfo } from "./interfaces/SharedFileOut/KartSessionInfo";
+import { KartSplitsInfo } from "./interfaces/SharedFileOut/KartSplitsInfo";
+import { KartTelemetryInfo } from "./interfaces/SharedFileOut/KartTelemetryInfo";
+import { PluginInfo } from "./interfaces/SharedFileOut/PluginInfo";
+import { RaceClassificationInfo } from "./interfaces/SharedFileOut/RaceClassificationInfo";
+import { RaceCommunicationsInfo } from "./interfaces/SharedFileOut/RaceCommunicationsInfo";
+import { RaceEntriesInfo } from "./interfaces/SharedFileOut/RaceEntriesInfo";
+import { RaceEventInfo } from "./interfaces/SharedFileOut/RaceEventInfo";
+import { RaceLapsInfo } from "./interfaces/SharedFileOut/RaceLapsInfo";
+import { RaceSessionInfo } from "./interfaces/SharedFileOut/RaceSessionInfo";
+import { RaceSpeedsInfo } from "./interfaces/SharedFileOut/RaceSpeedsInfo";
+import { RaceSplitsInfo } from "./interfaces/SharedFileOut/RaceSplitsInfo";
+import { RaceTrackPositionsInfo } from "./interfaces/SharedFileOut/RaceTrackPositionsInfo";
+import { RaceVehiclesDataInfo } from "./interfaces/SharedFileOut/RaceVehiclesDataInfo";
+import { TrackSegmentsInfo } from "./interfaces/SharedFileOut/TrackSegmentsInfo";
+import { CamerasInfo } from "./interfaces/SharedFileOut/CamerasInfo";
+import { addon } from "./binding";
+import { Config } from "./interfaces/Config";
+import { ConfigDelay } from "./enums/ConfigDelay";
+import { GameState } from "./enums/GameState";
 
-import type { PluginInfo } from "./types/PluginInfo";
-import type { KartEventInfo } from "./types/KartEventInfo";
-import type { KartSessionInfo } from "./types/KartSessionInfo";
-import type { KartLapInfo } from "./types/KartLapInfo";
-import type { KartSplitInfo } from "./types/KartSplitInfo";
-import type { KartTelemetryInfo } from "./types/KartTelemetryInfo";
-import type { TrackSegmentInfo } from "./types/TrackSegmentInfo";
-import type { RaceEventInfo } from "./types/RaceEventInfo";
-import type { RaceAddEntryInfo } from "./types/RaceAddEntryInfo";
-import type { RaceRemoveEntryInfo } from "./types/RaceRemoveEntryInfo";
-import type { RaceSessionInfo } from "./types/RaceSessionInfo";
-import type { RaceSessionStateInfo } from "./types/RaceSessionStateInfo";
-import type { RaceLapInfo } from "./types/RaceLapInfo";
-import type { RaceSplitInfo } from "./types/RaceSplitInfo";
-import type { RaceSpeedInfo } from "./types/RaceSpeedInfo";
-import type { RaceCommunicationInfo } from "./types/RaceCommunicationInfo";
-import type { RaceClassificationInfo } from "./types/RaceClassificationInfo";
-import type { RaceTrackPositionInfo } from "./types/RaceTrackPositionInfo";
-import type { RaceVehicleDataInfo } from "./types/RaceVehicleDataInfo";
-import type { RaceEntriesInfo } from "./types/RaceEntriesInfo";
-import { CameraInfo } from './types/CameraInfo';
+export const MINIMUM_PLUGIN_VERSION = 12;
 
-class Wrapper extends TypedEmitter<WrapperEvents> {
-  public activated: boolean = false;
-  private readonly logging;
-  private readonly config: Config;
+export class Wrapper extends TypedEmitter<Events> {
+    public activated: boolean = false
+    private readonly config: Config
 
-  public pluginInfo: PluginInfo | null = null;
-  public kartEventInfo: KartEventInfo | null = null;
-  public kartSessionInfo: KartSessionInfo | null = null;
-  public kartLapInfo: KartLapInfo | null = null;
-  public kartSplitInfo: KartSplitInfo | null = null;
-  public kartTelemetryInfo: KartTelemetryInfo | null = null;
-  public trackSegmentInfo: TrackSegmentInfo | null = null;
-  public raceEventInfo: RaceEventInfo | null = null;
-  public raceEntriesInfo: RaceEntriesInfo | null = null;
-  public raceAddEntryInfo: RaceAddEntryInfo | null = null;
-  public raceRemoveEntryInfo: RaceRemoveEntryInfo | null = null;
-  public raceSessionInfo: RaceSessionInfo | null = null;
-  public raceSessionStateInfo: RaceSessionStateInfo | null = null;
-  public raceLapInfo: RaceLapInfo | null = null;
-  public raceSplitInfo: RaceSplitInfo | null = null;
-  public raceSpeedInfo: RaceSpeedInfo | null = null;
-  public raceCommunicationInfo: RaceCommunicationInfo | null = null;
-  public raceClassificationInfo: RaceClassificationInfo | null = null;
-  public raceTrackPositionInfo: RaceTrackPositionInfo | null = null;
-  public raceVehicleDataInfo: RaceVehicleDataInfo | null = null;
-  public cameraInfo: CameraInfo | null = null;
+    public pluginInfo: PluginInfo | undefined
+    public kartEventInfo: KartEventInfo | undefined
+    public kartSessionInfo: KartSessionInfo | undefined
+    public kartLapsInfo: KartLapsInfo | undefined
+    public kartSplitsInfo: KartSplitsInfo | undefined
+    public kartTelemetryInfo: KartTelemetryInfo | undefined
+    public trackSegmentsInfo: TrackSegmentsInfo | undefined
+    public raceEventInfo: RaceEventInfo | undefined
+    public raceEntriesInfo: RaceEntriesInfo | undefined
+    public raceSessionInfo: RaceSessionInfo | undefined
+    public raceLapsInfo: RaceLapsInfo | undefined
+    public raceSplitsInfo: RaceSplitsInfo | undefined
+    public raceSpeedsInfo: RaceSpeedsInfo | undefined
+    public raceCommunicationsInfo: RaceCommunicationsInfo | undefined
+    public raceClassificationInfo: RaceClassificationInfo | undefined
+    public raceTrackPositionsInfo: RaceTrackPositionsInfo | undefined
+    public raceVehiclesDataInfo: RaceVehiclesDataInfo | undefined
+    public camerasInfo: CamerasInfo | undefined
 
-  constructor(logging: boolean, Config: Config = DefaultConfig) {
-    super();
-
-    this.logging = logging;
-    this.config = Config;
-
-    // Needs 21 threads at least to work
-    if (!process.env.UV_THREADPOOL_SIZE || Number(process.env.UV_THREADPOOL_SIZE) < 21) {
-      this.logging && console.error('UV_THREADPOOL_SIZE needs to be higher than 21!')
-      return
+    constructor(config: Config = { ConnectDelay: ConfigDelay.SLOWEST, ReconnectDelay: ConfigDelay.SLOWEST, KeepAliveDelay: ConfigDelay.SLOWEST, UpdateDelay: ConfigDelay.NORMAL, logging: false }) {
+        super()
+        this.config = config
     }
 
-    addon.setWaitDelay(this.config.Delays.WaitDelay)
-  }
-
-  public activate(): void {
-    if (this.activated) return;
-    this.activated = true;
-    this.connect();
-  }
-
-  public deactivate(): void {
-    if (!this.activated) return;
-    this.activated = false;
-
-    this.pluginInfo = null
-    this.kartEventInfo = null
-    this.kartSessionInfo = null
-    this.kartLapInfo = null
-    this.kartSplitInfo = null
-    this.kartTelemetryInfo = null
-    this.trackSegmentInfo = null
-    this.raceEventInfo = null
-    this.raceEntriesInfo = null
-    this.raceAddEntryInfo = null
-    this.raceRemoveEntryInfo = null
-    this.raceSessionInfo = null
-    this.raceSessionStateInfo = null
-    this.raceLapInfo = null
-    this.raceSplitInfo = null
-    this.raceSpeedInfo = null
-    this.raceCommunicationInfo = null
-    this.raceClassificationInfo = null
-    this.raceTrackPositionInfo = null
-    this.raceVehicleDataInfo = null
-    this.cameraInfo = null
-
-    if (this.isConnected())
-      this.disconnect();
-  }
-
-  public isConnected(): boolean {
-    return addon.isConnected();
-  }
-
-  private connect() {
-    if (!this.activated) return
-    if (this.isConnected()) return
-
-    const isConnected = addon.connect();
-    if (isConnected) {
-      this.logging && console.log("CONNECTED")
-      this.emit('connected')
-      this.keepAlive();
-
-      this.updateKartEventInfo()
-      this.updateKartSessionInfo()
-      this.updateKartLapInfo()
-      this.updateKartSplitInfo()
-      this.updateKartTelemetryInfo()
-      this.updateTrackSegmentInfo()
-      this.updateRaceEventInfo()
-      this.updateRaceEntriesInfo()
-      this.updateRaceAddEntryInfo()
-      this.updateRaceRemoveEntryInfo()
-      this.updateRaceSessionInfo()
-      this.updateRaceSessionStateInfo()
-      this.updateRaceLapInfo()
-      this.updateRaceSplitInfo()
-      this.updateRaceSpeedInfo()
-      this.updateRaceCommunicationInfo()
-      this.updateRaceClassificationInfo()
-      this.updateRaceTrackPositionInfo()
-      this.updateRaceVehicleDataInfo()
-      this.updateCameraInfo()
-
-      return;
+    public activate(): void {
+        if (this.activated) return
+        this.activated = true
+        this.connect()
     }
 
-    setTimeout(this.connect.bind(this), this.config.Delays.ConnectDelay)
-  }
+    public deactivate(): void {
+        if (!this.activated) return;
+        this.activated = false;
 
-  private disconnect(reason: string = '') {
-    addon.disconnect()
-    this.logging && console.log("DISCONNECTED")
-    this.emit('disconnected', reason)
-    if (!this.activated) return
-    setTimeout(() => this.connect(), this.config.Delays.ReconnectDelay)
-  }
+        this.pluginInfo = undefined
+        this.kartEventInfo = undefined
+        this.kartSessionInfo = undefined
+        this.kartLapsInfo = undefined
+        this.kartSplitsInfo = undefined
+        this.kartTelemetryInfo = undefined
+        this.trackSegmentsInfo = undefined
+        this.raceEventInfo = undefined
+        this.raceEntriesInfo = undefined
+        this.raceSessionInfo = undefined
+        this.raceLapsInfo = undefined
+        this.raceSplitsInfo = undefined
+        this.raceSpeedsInfo = undefined
+        this.raceCommunicationsInfo = undefined
+        this.raceClassificationInfo = undefined
+        this.raceTrackPositionsInfo = undefined
+        this.raceVehiclesDataInfo = undefined
+        this.camerasInfo = undefined
 
-  private async keepAlive() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
-
-    this.pluginInfo = await addon.listenForPluginInfoPromise();
-    this.emit('pluginInfo', this.pluginInfo)
-    if (this.pluginInfo.m_iState === -1) {
-      this.disconnect();
-      return
+        if (this.isConnected())
+            this.disconnect()
     }
 
-    if (this.pluginInfo.m_PluginVersion < 11) {
-      this.logging && console.error("Plugin version is smaller then 11!")
-      this.disconnect("Plugin version is smaller then 11!");
-      return
+    public isConnected(): boolean {
+        return addon.isConnected();
     }
 
-    setTimeout(this.keepAlive.bind(this), this.config.Delays.KeepAliveDelay)
-  }
+    private connect(): void {
+        if (!this.activated || this.isConnected()) return;
 
-  private async updateKartEventInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+        if (addon.connect()) {
+            this.config.logging && console.log("CONNECTED")
+            this.emit("connected")
 
-    try {
-      this.kartEventInfo = await addon.listenForKartEventInfoPromise();
-      this.emit('kartEventInfo', this.kartEventInfo)
-      setTimeout(this.updateKartEventInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+            // Start events
+            this.keepAlive();
+            this.updateKartEventInfo();
+            this.updateKartSessionInfo();
+            this.updateKartLapsInfo();
+            this.updateKartSplitsInfo();
+            this.updateKartTelemetryInfo();
+            this.updateTrackSegmentsInfo();
+            this.updateRaceEventInfo();
+            this.updateRaceEntriesInfo();
+            this.updateRaceSessionInfo();
+            this.updateRaceLapsInfo();
+            this.updateRaceSplitsInfo();
+            this.updateRaceSpeedsInfo();
+            this.updateRaceTrackPositionsInfo();
+            this.updateRaceVehiclesDataInfo();
+            this.updateCamerasInfo();
+
+            return
+        }
+
+        this.config.logging && console.log("FAILED TO CONNECT")
+        setTimeout(() => this.connect(), this.config.ConnectDelay)
     }
-  }
 
-  private async updateKartSessionInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
-
-    try {
-      this.kartSessionInfo = await addon.listenForKartSessionInfoPromise();
-      this.emit('kartSessionInfo', this.kartSessionInfo)
-      setTimeout(this.updateKartSessionInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+    private disconnect(reason: string = ""): void {
+        addon.disconnect();
+        this.config.logging && console.log("DISCONNECTED")
+        this.emit("disconnected", reason)
+        if (!this.activated) return
+        setTimeout(() => this.connect(), this.config.ReconnectDelay)
     }
-  }
 
-  private async updateKartLapInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+    private keepAlive(): void {
+        if (!this.activated || !this.isConnected()) return
 
-    try {
-      this.kartLapInfo = await addon.listenForKartLapInfoPromise();
-      this.emit('kartLapInfo', this.kartLapInfo)
-      setTimeout(this.updateKartLapInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+        this.pluginInfo = addon.getPluginInfo()
+        this.emit('pluginInfo', this.pluginInfo)
+
+        // Disconnect when GameState = CLOSED
+        if (this.pluginInfo.m_GameState === GameState.CLOSED) {
+            this.disconnect()
+            return
+        }
+
+        // Check version of plugin
+        if (this.pluginInfo.m_PluginVersion < MINIMUM_PLUGIN_VERSION) {
+            this.config.logging && console.log(`Plugin version ${this.pluginInfo.m_PluginVersion} < ${MINIMUM_PLUGIN_VERSION}!`)
+            this.disconnect(`Plugin version ${this.pluginInfo.m_PluginVersion} < ${MINIMUM_PLUGIN_VERSION}!`)
+            return
+        }
+
+        setTimeout(() => this.keepAlive(), this.config.KeepAliveDelay)
     }
-  }
 
-  private async updateKartSplitInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+    private updateKartEventInfo() {
+        if (!this.activated || !this.isConnected()) return
 
-    try {
-      this.kartSplitInfo = await addon.listenForKartSplitInfoPromise();
-      this.emit('kartSplitInfo', this.kartSplitInfo)
-      setTimeout(this.updateKartSplitInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+        this.kartEventInfo = addon.getKartEventInfo()
+        this.emit('kartEventInfo', this.kartEventInfo)
+
+        setTimeout(() => this.updateKartEventInfo(), this.config.UpdateDelay)
     }
-  }
 
-  private async updateKartTelemetryInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+    private updateKartSessionInfo() {
+        if (!this.activated || !this.isConnected()) return
 
-    try {
-      this.kartTelemetryInfo = await addon.listenForKartTelemetryInfoPromise();
-      this.emit('kartTelemetryInfo', this.kartTelemetryInfo)
-      setTimeout(this.updateKartTelemetryInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+        this.kartSessionInfo = addon.getKartSessionInfo()
+        this.emit('kartSessionInfo', this.kartSessionInfo)
+
+        setTimeout(() => this.updateKartSessionInfo(), this.config.UpdateDelay)
     }
-  }
 
-  private async updateTrackSegmentInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+    private updateKartLapsInfo() {
+        if (!this.activated || !this.isConnected()) return
 
-    try {
-      this.trackSegmentInfo = await addon.listenForTrackSegmentInfoPromise();
-      this.emit('trackSegmentInfo', this.trackSegmentInfo)
-      setTimeout(this.updateTrackSegmentInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+        this.kartLapsInfo = addon.getKartLapsInfo()
+        this.emit('kartLapsInfo', this.kartLapsInfo)
+
+        setTimeout(() => this.updateKartLapsInfo(), this.config.UpdateDelay)
     }
-  }
 
-  private async updateRaceEventInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+    private updateKartSplitsInfo() {
+        if (!this.activated || !this.isConnected()) return
 
-    try {
-      this.raceEventInfo = await addon.listenForRaceEventInfoPromise();
-      this.emit('raceEventInfo', this.raceEventInfo)
-      setTimeout(this.updateRaceEventInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+        this.kartSplitsInfo = addon.getKartSplitsInfo()
+        this.emit('kartSplitsInfo', this.kartSplitsInfo)
+
+        setTimeout(() => this.updateKartSplitsInfo(), this.config.UpdateDelay)
     }
-  }
 
-  private async updateRaceEntriesInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+    private updateKartTelemetryInfo() {
+        if (!this.activated || !this.isConnected()) return
 
-    try {
-      this.raceEntriesInfo = await addon.listenForRaceEntriesInfoPromise();
-      this.emit('raceEntriesInfo', this.raceEntriesInfo)
-      setTimeout(this.updateRaceEntriesInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+        this.kartTelemetryInfo = addon.getKartTelemetryInfo()
+        this.emit('kartTelemetryInfo', this.kartTelemetryInfo)
+
+        setTimeout(() => this.updateKartTelemetryInfo(), this.config.UpdateDelay)
     }
-  }
 
-  private async updateRaceAddEntryInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+    private updateTrackSegmentsInfo() {
+        if (!this.activated || !this.isConnected()) return
 
-    try {
-      this.raceAddEntryInfo = await addon.listenForRaceAddEntryInfoPromise();
-      this.emit('raceAddEntryInfo', this.raceAddEntryInfo)
-      setTimeout(this.updateRaceAddEntryInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+        this.trackSegmentsInfo = addon.getTrackSegmentsInfo()
+        this.emit('trackSegmentsInfo', this.trackSegmentsInfo)
+
+        setTimeout(() => this.updateTrackSegmentsInfo(), this.config.UpdateDelay)
     }
-  }
 
-  private async updateRaceRemoveEntryInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+    private updateRaceEventInfo() {
+        if (!this.activated || !this.isConnected()) return
 
-    try {
-      this.raceRemoveEntryInfo = await addon.listenForRaceRemoveEntryInfoPromise();
-      this.emit('raceRemoveEntryInfo', this.raceRemoveEntryInfo)
-      setTimeout(this.updateRaceRemoveEntryInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+        this.raceEventInfo = addon.getRaceEventInfo()
+        this.emit('raceEventInfo', this.raceEventInfo)
+
+        setTimeout(() => this.updateRaceEventInfo(), this.config.UpdateDelay)
     }
-  }
 
-  private async updateRaceSessionInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+    private updateRaceEntriesInfo() {
+        if (!this.activated || !this.isConnected()) return
 
-    try {
-      this.raceSessionInfo = await addon.listenForRaceSessionInfoPromise();
-      this.emit('raceSessionInfo', this.raceSessionInfo)
-      setTimeout(this.updateRaceSessionInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+        this.raceEntriesInfo = addon.getRaceEntriesInfo()
+        this.emit('raceEntriesInfo', this.raceEntriesInfo)
+
+        setTimeout(() => this.updateRaceEntriesInfo(), this.config.UpdateDelay)
     }
-  }
 
-  private async updateRaceSessionStateInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+    private updateRaceSessionInfo() {
+        if (!this.activated || !this.isConnected()) return
 
-    try {
-      this.raceSessionStateInfo = await addon.listenForRaceSessionStateInfoPromise();
-      this.emit('raceSessionStateInfo', this.raceSessionStateInfo)
-      setTimeout(this.updateRaceSessionStateInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+        this.raceSessionInfo = addon.getRaceSessionInfo()
+        this.emit('raceSessionInfo', this.raceSessionInfo)
+
+        setTimeout(() => this.updateRaceSessionInfo(), this.config.UpdateDelay)
     }
-  }
 
-  private async updateRaceLapInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+    private updateRaceLapsInfo() {
+        if (!this.activated || !this.isConnected()) return
 
-    try {
-      this.raceLapInfo = await addon.listenForRaceLapInfoPromise();
-      this.emit('raceLapInfo', this.raceLapInfo)
-      setTimeout(this.updateRaceLapInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+        this.raceLapsInfo = addon.getRaceLapsInfo()
+        this.emit('raceLapsInfo', this.raceLapsInfo)
+
+        setTimeout(() => this.updateRaceLapsInfo(), this.config.UpdateDelay)
     }
-  }
 
-  private async updateRaceSplitInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+    private updateRaceSplitsInfo() {
+        if (!this.activated || !this.isConnected()) return
 
-    try {
-      this.raceSplitInfo = await addon.listenForRaceSplitInfoPromise();
-      this.emit('raceSplitInfo', this.raceSplitInfo)
-      setTimeout(this.updateRaceSplitInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+        this.raceSplitsInfo = addon.getRaceSplitsInfo()
+        this.emit('raceSplitsInfo', this.raceSplitsInfo)
+
+        setTimeout(() => this.updateRaceSplitsInfo(), this.config.UpdateDelay)
     }
-  }
 
-  private async updateRaceSpeedInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+    private updateRaceSpeedsInfo() {
+        if (!this.activated || !this.isConnected()) return
 
-    try {
-      this.raceSpeedInfo = await addon.listenForRaceSpeedInfoPromise();
-      this.emit('raceSpeedInfo', this.raceSpeedInfo)
-      setTimeout(this.updateRaceSpeedInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+        this.raceSpeedsInfo = addon.getRaceSpeedsInfo()
+        this.emit('raceSpeedsInfo', this.raceSpeedsInfo)
+
+        setTimeout(() => this.updateRaceSpeedsInfo(), this.config.UpdateDelay)
     }
-  }
 
-  private async updateRaceCommunicationInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+    private updateRaceClassificationInfo() {
+        if (!this.activated || !this.isConnected()) return
 
-    try {
-      this.raceCommunicationInfo = await addon.listenForRaceCommunicationInfoPromise();
-      this.emit('raceCommunicationInfo', this.raceCommunicationInfo)
-      setTimeout(this.updateRaceCommunicationInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+        this.raceClassificationInfo = addon.getRaceClassificationInfo()
+        this.emit('raceClassificationInfo', this.raceClassificationInfo)
+
+        setTimeout(() => this.updateRaceClassificationInfo(), this.config.UpdateDelay)
     }
-  }
 
-  private async updateRaceClassificationInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+    private updateRaceTrackPositionsInfo() {
+        if (!this.activated || !this.isConnected()) return
 
-    try {
-      this.raceClassificationInfo = await addon.listenForRaceClassificationInfoPromise();
-      this.emit('raceClassificationInfo', this.raceClassificationInfo)
-      setTimeout(this.updateRaceClassificationInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+        this.raceTrackPositionsInfo = addon.getRaceTrackPositionsInfo()
+        this.emit('raceTrackPositionsInfo', this.raceTrackPositionsInfo)
+
+        setTimeout(() => this.updateRaceTrackPositionsInfo(), this.config.UpdateDelay)
     }
-  }
 
-  private async updateRaceTrackPositionInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+    private updateRaceVehiclesDataInfo() {
+        if (!this.activated || !this.isConnected()) return
 
-    try {
-      this.raceTrackPositionInfo = await addon.listenForRaceTrackPositionInfoPromise();
-      this.emit('raceTrackPositionInfo', this.raceTrackPositionInfo)
-      setTimeout(this.updateRaceTrackPositionInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+        this.raceVehiclesDataInfo = addon.getRaceVehiclesDataInfo()
+        this.emit('raceVehiclesDataInfo', this.raceVehiclesDataInfo)
+
+        setTimeout(() => this.updateRaceVehiclesDataInfo(), this.config.UpdateDelay)
     }
-  }
 
-  private async updateRaceVehicleDataInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
+    private updateCamerasInfo() {
+        if (!this.activated || !this.isConnected()) return
 
-    try {
-      this.raceVehicleDataInfo = await addon.listenForRaceVehicleDataInfoPromise();
-      this.emit('raceVehicleDataInfo', this.raceVehicleDataInfo)
-      setTimeout(this.updateRaceVehicleDataInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+        this.camerasInfo = addon.getCamerasInfo()
+        this.emit('camerasInfo', this.camerasInfo)
+
+        setTimeout(() => this.updateCamerasInfo(), this.config.UpdateDelay)
     }
-  }
 
-  private async updateCameraInfo() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
-
-    try {
-      this.cameraInfo = await addon.listenForCameraInfoPromise();
-      this.emit('cameraInfo', this.cameraInfo)
-      setTimeout(this.updateCameraInfo.bind(this), this.config.Delays.UpdateDelay)
-    } catch (e) {
-      this.logging && console.error(e)
+    public spectateVehicle(vehicle: number) {
+        if (!this.activated || !this.isConnected()) return
+        addon.setVehicle(vehicle)
     }
-  }
 
-  public spectateVehicle(index: number) {
-    if (!this.activated) return
-    if (!this.isConnected()) return
-
-    addon.setIsControlled(1);
-    addon.setSelectedVehicle(index);
-    addon.setSelectedCamera(0);
-  }
-
-  public spectateCamera(index: number) {
-    if (!this.activated) return
-    if (!this.isConnected()) return
-
-    addon.setIsControlled(1);
-    addon.setSelectedCamera(index);
-  }
-
-  public spectateStop() {
-    if (!this.activated) return
-    if (!this.isConnected()) return
-    addon.setIsControlled(0);
-  }
+    public spectateCamera(camera: number) {
+        if (!this.activated || !this.isConnected()) return
+        addon.setCamera(camera)
+    }
 }
 
 export default Wrapper;

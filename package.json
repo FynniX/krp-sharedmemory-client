@@ -1,41 +1,48 @@
 {
   "name": "krp-sharedmemory-client",
-  "version": "1.0.13",
-  "description": "",
-  "author": "Fynn Haupt",
-  "license": "MIT",
+  "version": "2.0.0",
+  "description": "Node.js Wrapper to communicate with Kart Racing Pro Client.",
   "main": "dist/wrapper.js",
   "types": "dist/wrapper.d.ts",
   "gypfile": true,
   "scripts": {
-    "install": "(prebuild-install || node-gyp rebuild) && tsc",
-    "test": "cross-env UV_THREADPOOL_SIZE=32 node --napi-modules ./test/test_binding.js",
-    "test:run": "cross-env UV_THREADPOOL_SIZE=32 node --napi-modules ./test/test_run.js",
+    "install": "prebuild-install || npm run build",
+    "build": "node-gyp rebuild",
     "clean": "node-gyp clean",
     "prebuild": "prebuild -t 3 -r napi -a x64 --strip",
     "prebuild-upload": "node ./scripts/upload.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/FynniX/krp-sharedmemory-client.git"
+    "url": "git+https://github.com/FynniX/krp-sharedmemory-client.git"
   },
+  "keywords": [
+    "krp",
+    "wrapper",
+    "kart",
+    "racing",
+    "pro"
+  ],
+  "author": "Fynn Haupt",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/FynniX/krp-sharedmemory-client/issues"
   },
+  "homepage": "https://github.com/FynniX/krp-sharedmemory-client#readme",
   "binary": {
     "napi_versions": [
       3
     ]
   },
-  "devDependencies": {
-    "@types/node": "^20.2.5",
-    "cross-env": "^7.0.3",
-    "prebuild": "^12.1.0",
-    "typescript": "^5.1.3"
-  },
   "dependencies": {
-    "node-addon-api": "^6.1.0",
-    "prebuild-install": "^7.1.1",
+    "node-addon-api": "^8.0.0",
+    "prebuild-install": "^7.1.2",
     "tiny-typed-emitter": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.26",
+    "node-gyp": "^10.0.1",
+    "prebuild": "^13.0.0",
+    "typescript": "^5.4.2"
   }
 }

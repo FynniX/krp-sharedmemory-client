@@ -1,7 +1,8 @@
-#pragma once
+#ifndef SHAREDFILEIN_H
+#define SHAREDFILEIN_H
 
 /******************************************************************************
-structures to receive data from the simulated kart
+structures and functions to receive data from the simulated kart
 ******************************************************************************/
 
 typedef struct
@@ -44,12 +45,12 @@ typedef struct
 	int m_iGear;													/* 0 = Neutral */
 	float m_fFuel;													/* liters */
 	float m_fSpeedometer;											/* meters/second */
-	float m_fPosX, m_fPosY, m_fPosZ;									/* world position of a reference point attached to chassis ( not CG ) */
-	float m_fVelocityX, m_fVelocityY, m_fVelocityZ;					/* velocity of CG in world coordinates. meters/second */
-	float m_fAccelerationX, m_fAccelerationY, m_fAccelerationZ;		/* acceleration of CG local to chassis rotation, expressed in G ( 9.81 m/s2 ) and averaged over the latest 10ms */
+	float m_fPosX,m_fPosY,m_fPosZ;									/* world position of a reference point attached to chassis ( not CG ) */
+	float m_fVelocityX,m_fVelocityY,m_fVelocityZ;					/* velocity of CG in world coordinates. meters/second */
+	float m_fAccelerationX,m_fAccelerationY,m_fAccelerationZ;		/* acceleration of CG local to chassis rotation, expressed in G ( 9.81 m/s2 ) and averaged over the latest 10ms */
 	float m_aafRot[3][3];											/* rotation matrix of the chassis */
-	float m_fYaw, m_fPitch, m_fRoll;									/* degrees, -180 to 180 */
-	float m_fYawVelocity, m_fPitchVelocity, m_fRollVelocity;			/* degress / second */
+	float m_fYaw,m_fPitch,m_fRoll;									/* degrees, -180 to 180 */
+	float m_fYawVelocity,m_fPitchVelocity,m_fRollVelocity;			/* degress / second */
 	float m_fInputSteer;											/* degrees. Negative = left */
 	float m_fInputThrottle;											/* 0 to 1 */
 	float m_fInputBrake;											/* 0 to 1 */
@@ -97,7 +98,7 @@ typedef struct
 } SPluginString_t;
 
 /******************************************************************************
-structures to receive the track center line
+structures and functions to receive the track center line
 ******************************************************************************/
 
 typedef struct
@@ -111,7 +112,7 @@ typedef struct
 } SPluginsTrackSegment_t;
 
 /******************************************************************************
-structures to receive the race data
+structures and functions to receive the race data
 ******************************************************************************/
 
 typedef struct
@@ -143,7 +144,7 @@ typedef struct
 {
 	int m_iSession;										/* testing: always 0. Race: 1 = practice; 2 = qualify; 3 = warmup; 4 = qualify heat; 5 = second chance heat; 6 = prefinal; 7 = final. Challenge: 0 = waiting; 1 = practice; 2 = race */
 	int m_iSessionSeries;
-	int m_iGroup1, m_iGroup2;							/* 0 = A, 1 = B, 2 = C, ... Only used for Qualify Heats */
+	int m_iGroup1,m_iGroup2;							/* 0 = A, 1 = B, 2 = C, ... Only used for Qualify Heats */
 	int m_iSessionState;								/* testing / waiting: always 0. practice / qualify / warmup: 16 = in progress; 32 = completed. qualify heat / second chance heat / prefinal / final: 16 = in progress; 32 = semaphore; 64 = sighting lap; 128 = warmup lap; 256 = pre-start; 512 = race over; 1024 = completed; 2048 = rolling start */
 	int m_iSessionLength;								/* milliseconds. 0 = no limit */
 	int m_iSessionNumLaps;
@@ -235,7 +236,7 @@ typedef struct
 typedef struct
 {
 	int m_iRaceNum;										/* race number */
-	float m_fPosX, m_fPosY, m_fPosZ;						/* meters */
+	float m_fPosX,m_fPosY,m_fPosZ;						/* meters */
 	float m_fYaw;										/* angle from north. degrees */
 	float m_fTrackPos;									/* position on the centerline, from 0 to 1 */
 } SPluginsRaceTrackPosition_t;
@@ -261,3 +262,5 @@ typedef struct
 	int m_iRaceNum;
 	char m_szName[100];
 } SPluginsSpectateVehicle_t;
+
+#endif
