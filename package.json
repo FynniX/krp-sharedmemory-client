@@ -1,6 +1,6 @@
 {
   "name": "krp-sharedmemory-client",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Node.js Wrapper to communicate with Kart Racing Pro Client.",
   "main": "dist/wrapper.js",
   "types": "dist/wrapper.d.ts",
@@ -51,6 +51,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.11.26",
+    "@types/pidusage": "^2.0.5",
     "@typescript-eslint/eslint-plugin": "^7.3.1",
     "@typescript-eslint/parser": "^7.3.1",
     "eslint": "^8.57.0",
@@ -58,6 +59,7 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "node-gyp": "^10.0.1",
+    "pidusage": "^3.0.2",
     "prebuild": "^13.0.0",
     "prettier": "3.2.5",
     "typedoc": "^0.25.12",

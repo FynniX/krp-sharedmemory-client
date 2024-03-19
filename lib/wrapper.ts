@@ -159,7 +159,7 @@ export class Wrapper extends TypedEmitter<Events> {
       ConnectDelay: ConfigDelay.SLOWEST,
       ReconnectDelay: ConfigDelay.SLOWEST,
       KeepAliveDelay: ConfigDelay.SLOWEST,
-      UpdateDelay: ConfigDelay.NORMAL,
+      UpdateDelay: ConfigDelay.FAST,
       logging: false,
     },
   ) {
