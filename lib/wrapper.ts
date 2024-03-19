@@ -274,8 +274,10 @@ export class Wrapper extends TypedEmitter<Events> {
   private keepAlive(): void {
     if (!this.activated || !this.isConnected()) return;
 
+    const lastId = this.pluginInfo?.m_id || -1;
     this.pluginInfo = addon.getPluginInfo();
-    this.emit("pluginInfo", this.pluginInfo);
+    lastId !== this.pluginInfo?.m_id &&
+      this.emit("pluginInfo", this.pluginInfo);
 
     // Disconnect when GameState = CLOSED
     if (this.pluginInfo.m_GameState === GameState.CLOSED) {
@@ -305,8 +307,10 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateKartEventInfo() {
     if (!this.activated || !this.isConnected()) return;
+    const lastId = this.kartEventInfo?.m_id || -1;
     this.kartEventInfo = addon.getKartEventInfo();
-    this.emit("kartEventInfo", this.kartEventInfo);
+    lastId !== this.kartEventInfo?.m_id &&
+      this.emit("kartEventInfo", this.kartEventInfo);
     setTimeout(() => this.updateKartEventInfo(), this.config.UpdateDelay);
   }
 
@@ -317,8 +321,10 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateKartSessionInfo() {
     if (!this.activated || !this.isConnected()) return;
+    const lastId = this.kartSessionInfo?.m_id || -1;
     this.kartSessionInfo = addon.getKartSessionInfo();
-    this.emit("kartSessionInfo", this.kartSessionInfo);
+    lastId !== this.kartSessionInfo?.m_id &&
+      this.emit("kartSessionInfo", this.kartSessionInfo);
     setTimeout(() => this.updateKartSessionInfo(), this.config.UpdateDelay);
   }
 
@@ -329,8 +335,10 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateKartLapsInfo() {
     if (!this.activated || !this.isConnected()) return;
+    const lastId = this.kartLapsInfo?.m_id || -1;
     this.kartLapsInfo = addon.getKartLapsInfo();
-    this.emit("kartLapsInfo", this.kartLapsInfo);
+    lastId !== this.kartLapsInfo?.m_id &&
+      this.emit("kartLapsInfo", this.kartLapsInfo);
     setTimeout(() => this.updateKartLapsInfo(), this.config.UpdateDelay);
   }
 
@@ -341,8 +349,10 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateKartSplitsInfo() {
     if (!this.activated || !this.isConnected()) return;
+    const lastId = this.kartSplitsInfo?.m_id || -1;
     this.kartSplitsInfo = addon.getKartSplitsInfo();
-    this.emit("kartSplitsInfo", this.kartSplitsInfo);
+    lastId !== this.kartSplitsInfo?.m_id &&
+      this.emit("kartSplitsInfo", this.kartSplitsInfo);
     setTimeout(() => this.updateKartSplitsInfo(), this.config.UpdateDelay);
   }
 
@@ -353,8 +363,10 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateKartTelemetryInfo() {
     if (!this.activated || !this.isConnected()) return;
+    const lastId = this.kartTelemetryInfo?.m_id || -1;
     this.kartTelemetryInfo = addon.getKartTelemetryInfo();
-    this.emit("kartTelemetryInfo", this.kartTelemetryInfo);
+    lastId !== this.kartTelemetryInfo?.m_id &&
+      this.emit("kartTelemetryInfo", this.kartTelemetryInfo);
     setTimeout(() => this.updateKartTelemetryInfo(), this.config.UpdateDelay);
   }
 
@@ -365,8 +377,10 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateTrackSegmentsInfo() {
     if (!this.activated || !this.isConnected()) return;
+    const lastId = this.trackSegmentsInfo?.m_id || -1;
     this.trackSegmentsInfo = addon.getTrackSegmentsInfo();
-    this.emit("trackSegmentsInfo", this.trackSegmentsInfo);
+    lastId !== this.trackSegmentsInfo?.m_id &&
+      this.emit("trackSegmentsInfo", this.trackSegmentsInfo);
     setTimeout(() => this.updateTrackSegmentsInfo(), this.config.UpdateDelay);
   }
 
@@ -377,8 +391,10 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceEventInfo() {
     if (!this.activated || !this.isConnected()) return;
+    const lastId = this.raceEventInfo?.m_id || -1;
     this.raceEventInfo = addon.getRaceEventInfo();
-    this.emit("raceEventInfo", this.raceEventInfo);
+    lastId !== this.raceEventInfo?.m_id &&
+      this.emit("raceEventInfo", this.raceEventInfo);
     setTimeout(() => this.updateRaceEventInfo(), this.config.UpdateDelay);
   }
 
@@ -389,8 +405,10 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceEntriesInfo() {
     if (!this.activated || !this.isConnected()) return;
+    const lastId = this.raceEntriesInfo?.m_id || -1;
     this.raceEntriesInfo = addon.getRaceEntriesInfo();
-    this.emit("raceEntriesInfo", this.raceEntriesInfo);
+    lastId !== this.raceEntriesInfo?.m_id &&
+      this.emit("raceEntriesInfo", this.raceEntriesInfo);
     setTimeout(() => this.updateRaceEntriesInfo(), this.config.UpdateDelay);
   }
 
@@ -401,8 +419,10 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceSessionInfo() {
     if (!this.activated || !this.isConnected()) return;
+    const lastId = this.raceSessionInfo?.m_id || -1;
     this.raceSessionInfo = addon.getRaceSessionInfo();
-    this.emit("raceSessionInfo", this.raceSessionInfo);
+    lastId !== this.raceSessionInfo?.m_id &&
+      this.emit("raceSessionInfo", this.raceSessionInfo);
     setTimeout(() => this.updateRaceSessionInfo(), this.config.UpdateDelay);
   }
 
@@ -413,8 +433,10 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceLapsInfo() {
     if (!this.activated || !this.isConnected()) return;
+    const lastId = this.raceLapsInfo?.m_id || -1;
     this.raceLapsInfo = addon.getRaceLapsInfo();
-    this.emit("raceLapsInfo", this.raceLapsInfo);
+    lastId !== this.raceLapsInfo?.m_id &&
+      this.emit("raceLapsInfo", this.raceLapsInfo);
     setTimeout(() => this.updateRaceLapsInfo(), this.config.UpdateDelay);
   }
 
@@ -425,8 +447,10 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceSplitsInfo() {
     if (!this.activated || !this.isConnected()) return;
+    const lastId = this.raceSplitsInfo?.m_id || -1;
     this.raceSplitsInfo = addon.getRaceSplitsInfo();
-    this.emit("raceSplitsInfo", this.raceSplitsInfo);
+    lastId !== this.raceSplitsInfo?.m_id &&
+      this.emit("raceSplitsInfo", this.raceSplitsInfo);
     setTimeout(() => this.updateRaceSplitsInfo(), this.config.UpdateDelay);
   }
 
@@ -437,8 +461,10 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceSpeedsInfo() {
     if (!this.activated || !this.isConnected()) return;
+    const lastId = this.raceSpeedsInfo?.m_id || -1;
     this.raceSpeedsInfo = addon.getRaceSpeedsInfo();
-    this.emit("raceSpeedsInfo", this.raceSpeedsInfo);
+    lastId !== this.raceSpeedsInfo?.m_id &&
+      this.emit("raceSpeedsInfo", this.raceSpeedsInfo);
     setTimeout(() => this.updateRaceSpeedsInfo(), this.config.UpdateDelay);
   }
 
@@ -449,8 +475,10 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceClassificationInfo() {
     if (!this.activated || !this.isConnected()) return;
+    const lastId = this.raceClassificationInfo?.m_id || -1;
     this.raceClassificationInfo = addon.getRaceClassificationInfo();
-    this.emit("raceClassificationInfo", this.raceClassificationInfo);
+    lastId !== this.raceClassificationInfo?.m_id &&
+      this.emit("raceClassificationInfo", this.raceClassificationInfo);
     setTimeout(
       () => this.updateRaceClassificationInfo(),
       this.config.UpdateDelay,
@@ -464,8 +492,10 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceTrackPositionsInfo() {
     if (!this.activated || !this.isConnected()) return;
+    const lastId = this.raceTrackPositionsInfo?.m_id || -1;
     this.raceTrackPositionsInfo = addon.getRaceTrackPositionsInfo();
-    this.emit("raceTrackPositionsInfo", this.raceTrackPositionsInfo);
+    lastId !== this.raceTrackPositionsInfo?.m_id &&
+      this.emit("raceTrackPositionsInfo", this.raceTrackPositionsInfo);
     setTimeout(
       () => this.updateRaceTrackPositionsInfo(),
       this.config.UpdateDelay,
@@ -479,8 +509,10 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceVehiclesDataInfo() {
     if (!this.activated || !this.isConnected()) return;
+    const lastId = this.raceVehiclesDataInfo?.m_id || -1;
     this.raceVehiclesDataInfo = addon.getRaceVehiclesDataInfo();
-    this.emit("raceVehiclesDataInfo", this.raceVehiclesDataInfo);
+    lastId !== this.raceVehiclesDataInfo?.m_id &&
+      this.emit("raceVehiclesDataInfo", this.raceVehiclesDataInfo);
     setTimeout(
       () => this.updateRaceVehiclesDataInfo(),
       this.config.UpdateDelay,
@@ -494,8 +526,10 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateCamerasInfo() {
     if (!this.activated || !this.isConnected()) return;
+    const lastId = this.camerasInfo?.m_id || -1;
     this.camerasInfo = addon.getCamerasInfo();
-    this.emit("camerasInfo", this.camerasInfo);
+    lastId !== this.camerasInfo?.m_id &&
+      this.emit("camerasInfo", this.camerasInfo);
     setTimeout(() => this.updateCamerasInfo(), this.config.UpdateDelay);
   }
 
