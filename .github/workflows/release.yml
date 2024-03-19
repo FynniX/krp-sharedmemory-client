@@ -20,7 +20,7 @@ jobs:
         run: npm install
 
       - name: Prebuild addon
-        run: npm run prebuild
+        run: npm run prebuild:build
 
       - name: Prebuild upload
         run: npm run prebuild:upload

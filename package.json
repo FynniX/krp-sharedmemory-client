@@ -10,7 +10,7 @@
     "build": "npx tsc",
     "build:addon": "node-gyp rebuild",
     "clean": "node-gyp clean",
-    "prebuild": "prebuild -t 3 -r napi -a x64 --strip",
+    "prebuild:build": "prebuild -t 3 -r napi -a x64 --strip",
     "prebuild:upload": "node ./scripts/upload.js",
     "format": "npx prettier --check --ignore-unknown .",
     "format:fix": "npx prettier --write --ignore-unknown .",
