@@ -27,6 +27,7 @@ template <typename T>
 void BaseInfo<T>::Disconnect() {
     if(!connected) return;
     buffer->close();
+    connected = false;
 }
 
 template <typename T>
