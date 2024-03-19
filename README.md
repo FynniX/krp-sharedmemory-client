@@ -18,7 +18,7 @@ This package was tested under [Node.js](https://nodejs.org/) 18.17.0 x64.
 
 ## Documentation
 
-[Documentation](https://github.com/FynniX/krp-sharedmemory-client/docs/)
+[Documentation](https://fynnix.github.io/krp-sharedmemory-client/)
 
 ### Events
 

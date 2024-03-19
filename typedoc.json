@@ -6,7 +6,7 @@
   "sort": ["source-order"],
   "navigationLinks": {
     "Plugin": "https://github.com/FynniX/krp-sharedmemory-plugin/",
-    "Docs": "https://github.com/FynniX/krp-sharedmemory-client/docs/",
+    "Docs": "https://fynnix.github.io/krp-sharedmemory-client/",
     "GitHub": "https://github.com/FynniX/krp-sharedmemory-client/"
   }
 }
