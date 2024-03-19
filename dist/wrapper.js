@@ -98,6 +98,7 @@ class Wrapper extends tiny_typed_emitter_1.TypedEmitter {
             this.updateRaceLapsInfo();
             this.updateRaceSplitsInfo();
             this.updateRaceSpeedsInfo();
+            this.updateRaceClassificationInfo();
             this.updateRaceTrackPositionsInfo();
             this.updateRaceVehiclesDataInfo();
             this.updateCamerasInfo();
@@ -338,6 +339,7 @@ class Wrapper extends tiny_typed_emitter_1.TypedEmitter {
             return;
         const lastId = ((_a = this.raceClassificationInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
         this.raceClassificationInfo = binding_1.addon.getRaceClassificationInfo();
+        console.log("test");
         lastId !== ((_b = this.raceClassificationInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("raceClassificationInfo", this.raceClassificationInfo);
         setTimeout(() => this.updateRaceClassificationInfo(), this.config.UpdateDelay);
