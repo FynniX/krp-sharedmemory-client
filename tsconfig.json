@@ -8,5 +8,6 @@
     "strict": true,
     "target": "es6",
     "esModuleInterop": true
-  }
+  },
+  "include": ["lib"]
 }
