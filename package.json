@@ -16,10 +16,11 @@
     "format:fix": "npx prettier --write --ignore-unknown .",
     "lint": "npx eslint .",
     "doc": "npx typedoc",
-    "prepare": "npx husky"
+    "prepare": "npx husky",
+    "precommit": "npm run lint && npm run format:fix"
   },
   "lint-staged": {
-    "**/*": "npm run lint && npm run format:fix && npm run doc"
+    "**/*": "npm run precommit"
   },
   "repository": {
     "type": "git",
