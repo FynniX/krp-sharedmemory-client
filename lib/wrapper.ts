@@ -478,7 +478,6 @@ export class Wrapper extends TypedEmitter<Events> {
     if (!this.activated || !this.isConnected()) return;
     const lastId = this.raceClassificationInfo?.m_id || -1;
     this.raceClassificationInfo = addon.getRaceClassificationInfo();
-    console.log("test");
     lastId !== this.raceClassificationInfo?.m_id &&
       this.emit("raceClassificationInfo", this.raceClassificationInfo);
     setTimeout(
