@@ -4,6 +4,8 @@
   "entryPointStrategy": "expand",
   "entryPoints": ["./lib"],
   "sort": ["source-order"],
+  "plugin": ["typedoc-material-theme"],
+  "themeColor": "#cb9820",
   "navigationLinks": {
     "Plugin": "https://github.com/FynniX/krp-sharedmemory-plugin/",
     "Docs": "https://fynnix.github.io/krp-sharedmemory-client/",
