@@ -1,4 +1,4 @@
 export enum PractiseSessionState {
-    RUNNING = 16,
-    COMPLETED = 32
+  RUNNING = 16,
+  COMPLETED = 32,
 }

@@ -1,0 +1,2140 @@
+<!doctype html>
+<html class="default" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <title>Addon | krp-sharedmemory-client</title>
+    <meta
+      name="description"
+      content="Documentation for krp-sharedmemory-client"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../assets/style.css" />
+    <link rel="stylesheet" href="../assets/highlight.css" />
+    <script defer src="../assets/main.js"></script>
+    <script async src="../assets/icons.js" id="tsd-icons-script"></script>
+    <script async src="../assets/search.js" id="tsd-search-script"></script>
+    <script async src="../assets/navigation.js" id="tsd-nav-script"></script>
+  </head>
+  <body>
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("tsd-theme") || "os";
+      document.body.style.display = "none";
+      setTimeout(
+        () =>
+          app ? app.showPage() : document.body.style.removeProperty("display"),
+        500,
+      );
+    </script>
+    <header class="tsd-page-toolbar">
+      <div class="tsd-toolbar-contents container">
+        <div class="table-cell" id="tsd-search" data-base="..">
+          <div class="field">
+            <label
+              for="tsd-search-field"
+              class="tsd-widget tsd-toolbar-icon search no-caption"
+              ><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <use href="../assets/icons.svg#icon-search"></use></svg></label
+            ><input type="text" id="tsd-search-field" aria-label="Search" />
+          </div>
+          <div class="field">
+            <div id="tsd-toolbar-links">
+              <a href="https://github.com/FynniX/krp-sharedmemory-plugin/"
+                >Plugin</a
+              ><a href="https://github.com/FynniX/krp-sharedmemory-client/docs/"
+                >Docs</a
+              ><a href="https://github.com/FynniX/krp-sharedmemory-client/"
+                >GitHub</a
+              >
+            </div>
+          </div>
+          <ul class="results">
+            <li class="state loading">Preparing search index...</li>
+            <li class="state failure">The search index is not available</li>
+          </ul>
+          <a href="../index.html" class="title">krp-sharedmemory-client</a>
+        </div>
+        <div class="table-cell" id="tsd-widgets">
+          <a
+            href="#"
+            class="tsd-widget tsd-toolbar-icon menu no-caption"
+            data-toggle="menu"
+            aria-label="Menu"
+            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <use href="../assets/icons.svg#icon-menu"></use></svg
+          ></a>
+        </div>
+      </div>
+    </header>
+    <div class="container container-main">
+      <div class="col-content">
+        <div class="tsd-page-title">
+          <ul class="tsd-breadcrumb">
+            <li><a href="../index.html">krp-sharedmemory-client</a></li>
+            <li>
+              <a href="../modules/interfaces_Addon.html">interfaces/Addon</a>
+            </li>
+            <li><a href="interfaces_Addon.Addon.html">Addon</a></li>
+          </ul>
+          <h1>Interface Addon</h1>
+        </div>
+        <div class="tsd-signature">
+          <span class="tsd-signature-keyword">interface </span
+          ><span class="tsd-kind-interface">Addon</span>
+          <span class="tsd-signature-symbol">{ </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#connect.connect-1"
+            >connect</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><span class="tsd-signature-type">boolean</span
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#disconnect.disconnect-1"
+            >disconnect</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><span class="tsd-signature-type">void</span
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#isConnected.isConnected-1"
+            >isConnected</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><span class="tsd-signature-type">boolean</span
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getPluginInfo.getPluginInfo-1"
+            >getPluginInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_PluginInfo.PluginInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >PluginInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getKartEventInfo.getKartEventInfo-1"
+            >getKartEventInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_KartEventInfo.KartEventInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >KartEventInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getKartSessionInfo.getKartSessionInfo-1"
+            >getKartSessionInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_KartSessionInfo.KartSessionInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >KartSessionInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getKartTelemetryInfo.getKartTelemetryInfo-1"
+            >getKartTelemetryInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_KartTelemetryInfo.KartTelemetryInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >KartTelemetryInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getKartLapsInfo.getKartLapsInfo-1"
+            >getKartLapsInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_KartLapsInfo.KartLapsInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >KartLapsInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getKartSplitsInfo.getKartSplitsInfo-1"
+            >getKartSplitsInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_KartSplitsInfo.KartSplitsInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >KartSplitsInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getTrackSegmentsInfo.getTrackSegmentsInfo-1"
+            >getTrackSegmentsInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_TrackSegmentsInfo.TrackSegmentsInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >TrackSegmentsInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getRaceEventInfo.getRaceEventInfo-1"
+            >getRaceEventInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_RaceEventInfo.RaceEventInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >RaceEventInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getRaceEntriesInfo.getRaceEntriesInfo-1"
+            >getRaceEntriesInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_RaceEntriesInfo.RaceEntriesInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >RaceEntriesInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getRaceSessionInfo.getRaceSessionInfo-1"
+            >getRaceSessionInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_RaceSessionInfo.RaceSessionInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >RaceSessionInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getRaceLapsInfo.getRaceLapsInfo-1"
+            >getRaceLapsInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_RaceLapsInfo.RaceLapsInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >RaceLapsInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getRaceSplitsInfo.getRaceSplitsInfo-1"
+            >getRaceSplitsInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_RaceSplitsInfo.RaceSplitsInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >RaceSplitsInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getRaceSpeedsInfo.getRaceSpeedsInfo-1"
+            >getRaceSpeedsInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_RaceSpeedsInfo.RaceSpeedsInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >RaceSpeedsInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getRaceCommunicationsInfo.getRaceCommunicationsInfo-1"
+            >getRaceCommunicationsInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_RaceCommunicationsInfo.RaceCommunicationsInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >RaceCommunicationsInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getRaceClassificationInfo.getRaceClassificationInfo-1"
+            >getRaceClassificationInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_RaceClassificationInfo.RaceClassificationInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >RaceClassificationInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getRaceTrackPositionsInfo.getRaceTrackPositionsInfo-1"
+            >getRaceTrackPositionsInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_RaceTrackPositionsInfo.RaceTrackPositionsInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >RaceTrackPositionsInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getRaceVehiclesDataInfo.getRaceVehiclesDataInfo-1"
+            >getRaceVehiclesDataInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_RaceVehiclesDataInfo.RaceVehiclesDataInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >RaceVehiclesDataInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#getCamerasInfo.getCamerasInfo-1"
+            >getCamerasInfo</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><a
+            href="interfaces_SharedFileOut_CamerasInfo.CamerasInfo.html"
+            class="tsd-signature-type tsd-kind-interface"
+            >CamerasInfo</a
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#setVehicle.setVehicle-1"
+            >setVehicle</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-kind-parameter">vehicle</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><span class="tsd-signature-type">void</span
+          ><span class="tsd-signature-symbol">; </span><br /><span>    </span
+          ><a
+            class="tsd-kind-call-signature"
+            href="interfaces_Addon.Addon.html#setCamera.setCamera-1"
+            >setCamera</a
+          ><span class="tsd-signature-symbol">(</span
+          ><span class="tsd-kind-parameter">camera</span
+          ><span class="tsd-signature-symbol">)</span
+          ><span class="tsd-signature-symbol">: </span
+          ><span class="tsd-signature-type">void</span
+          ><span class="tsd-signature-symbol">; </span><br /><span
+            class="tsd-signature-symbol"
+            >}</span
+          >
+        </div>
+        <aside class="tsd-sources">
+          <ul>
+            <li>
+              Defined in
+              <a
+                href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L20"
+                >lib/interfaces/Addon.ts:20</a
+              >
+            </li>
+          </ul>
+        </aside>
+        <section class="tsd-panel-group tsd-index-group">
+          <section class="tsd-panel tsd-index-panel">
+            <details class="tsd-index-content tsd-index-accordion" open>
+              <summary class="tsd-accordion-summary tsd-index-summary">
+                <h5
+                  class="tsd-index-heading uppercase"
+                  role="button"
+                  aria-expanded="false"
+                  tabindex="0"
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <use href="../assets/icons.svg#icon-chevronSmall"></use>
+                  </svg>
+                  Index
+                </h5>
+              </summary>
+              <div class="tsd-accordion-details">
+                <section class="tsd-index-section">
+                  <h3 class="tsd-index-heading">Methods</h3>
+                  <div class="tsd-index-list">
+                    <a
+                      href="interfaces_Addon.Addon.html#connect"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>connect</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#disconnect"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>disconnect</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#isConnected"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>is<wbr />Connected</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getPluginInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>get<wbr />Plugin<wbr />Info</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getKartEventInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>get<wbr />Kart<wbr />Event<wbr />Info</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getKartSessionInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>get<wbr />Kart<wbr />Session<wbr />Info</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getKartTelemetryInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>get<wbr />Kart<wbr />Telemetry<wbr />Info</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getKartLapsInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>get<wbr />Kart<wbr />Laps<wbr />Info</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getKartSplitsInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>get<wbr />Kart<wbr />Splits<wbr />Info</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getTrackSegmentsInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>get<wbr />Track<wbr />Segments<wbr />Info</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getRaceEventInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>get<wbr />Race<wbr />Event<wbr />Info</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getRaceEntriesInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>get<wbr />Race<wbr />Entries<wbr />Info</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getRaceSessionInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>get<wbr />Race<wbr />Session<wbr />Info</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getRaceLapsInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>get<wbr />Race<wbr />Laps<wbr />Info</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getRaceSplitsInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>get<wbr />Race<wbr />Splits<wbr />Info</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getRaceSpeedsInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>get<wbr />Race<wbr />Speeds<wbr />Info</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getRaceCommunicationsInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span
+                        >get<wbr />Race<wbr />Communications<wbr />Info</span
+                      ></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getRaceClassificationInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span
+                        >get<wbr />Race<wbr />Classification<wbr />Info</span
+                      ></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getRaceTrackPositionsInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span
+                        >get<wbr />Race<wbr />Track<wbr />Positions<wbr />Info</span
+                      ></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getRaceVehiclesDataInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span
+                        >get<wbr />Race<wbr />Vehicles<wbr />Data<wbr />Info</span
+                      ></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#getCamerasInfo"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>get<wbr />Cameras<wbr />Info</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#setVehicle"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>set<wbr />Vehicle</span></a
+                    >
+                    <a
+                      href="interfaces_Addon.Addon.html#setCamera"
+                      class="tsd-index-link"
+                      ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                        <use href="../assets/icons.svg#icon-2048"></use></svg
+                      ><span>set<wbr />Camera</span></a
+                    >
+                  </div>
+                </section>
+              </div>
+            </details>
+          </section>
+        </section>
+        <section class="tsd-panel-group tsd-member-group">
+          <h2>Methods</h2>
+          <section class="tsd-panel tsd-member">
+            <a id="connect" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>connect</span
+              ><a href="#connect" aria-label="Permalink" class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a id="connect.connect-1" class="tsd-anchor"></a
+                ><span class="tsd-kind-call-signature">connect</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><span class="tsd-signature-type">boolean</span
+                ><a
+                  href="#connect.connect-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns <span class="tsd-signature-type">boolean</span>
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L21"
+                        >lib/interfaces/Addon.ts:21</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="disconnect" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>disconnect</span
+              ><a
+                href="#disconnect"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a id="disconnect.disconnect-1" class="tsd-anchor"></a
+                ><span class="tsd-kind-call-signature">disconnect</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><span class="tsd-signature-type">void</span
+                ><a
+                  href="#disconnect.disconnect-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns <span class="tsd-signature-type">void</span>
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L22"
+                        >lib/interfaces/Addon.ts:22</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="isConnected" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>is<wbr />Connected</span
+              ><a
+                href="#isConnected"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a id="isConnected.isConnected-1" class="tsd-anchor"></a
+                ><span class="tsd-kind-call-signature">is<wbr />Connected</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><span class="tsd-signature-type">boolean</span
+                ><a
+                  href="#isConnected.isConnected-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns <span class="tsd-signature-type">boolean</span>
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L23"
+                        >lib/interfaces/Addon.ts:23</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getPluginInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Plugin<wbr />Info</span
+              ><a
+                href="#getPluginInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a id="getPluginInfo.getPluginInfo-1" class="tsd-anchor"></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Plugin<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_PluginInfo.PluginInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >PluginInfo</a
+                ><a
+                  href="#getPluginInfo.getPluginInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_PluginInfo.PluginInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >PluginInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L24"
+                        >lib/interfaces/Addon.ts:24</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getKartEventInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Kart<wbr />Event<wbr />Info</span
+              ><a
+                href="#getKartEventInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a
+                  id="getKartEventInfo.getKartEventInfo-1"
+                  class="tsd-anchor"
+                ></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Kart<wbr />Event<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_KartEventInfo.KartEventInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >KartEventInfo</a
+                ><a
+                  href="#getKartEventInfo.getKartEventInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_KartEventInfo.KartEventInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >KartEventInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L25"
+                        >lib/interfaces/Addon.ts:25</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getKartSessionInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Kart<wbr />Session<wbr />Info</span
+              ><a
+                href="#getKartSessionInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a
+                  id="getKartSessionInfo.getKartSessionInfo-1"
+                  class="tsd-anchor"
+                ></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Kart<wbr />Session<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_KartSessionInfo.KartSessionInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >KartSessionInfo</a
+                ><a
+                  href="#getKartSessionInfo.getKartSessionInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_KartSessionInfo.KartSessionInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >KartSessionInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L26"
+                        >lib/interfaces/Addon.ts:26</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getKartTelemetryInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Kart<wbr />Telemetry<wbr />Info</span
+              ><a
+                href="#getKartTelemetryInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a
+                  id="getKartTelemetryInfo.getKartTelemetryInfo-1"
+                  class="tsd-anchor"
+                ></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Kart<wbr />Telemetry<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_KartTelemetryInfo.KartTelemetryInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >KartTelemetryInfo</a
+                ><a
+                  href="#getKartTelemetryInfo.getKartTelemetryInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_KartTelemetryInfo.KartTelemetryInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >KartTelemetryInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L27"
+                        >lib/interfaces/Addon.ts:27</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getKartLapsInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Kart<wbr />Laps<wbr />Info</span
+              ><a
+                href="#getKartLapsInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a id="getKartLapsInfo.getKartLapsInfo-1" class="tsd-anchor"></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Kart<wbr />Laps<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_KartLapsInfo.KartLapsInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >KartLapsInfo</a
+                ><a
+                  href="#getKartLapsInfo.getKartLapsInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_KartLapsInfo.KartLapsInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >KartLapsInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L28"
+                        >lib/interfaces/Addon.ts:28</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getKartSplitsInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Kart<wbr />Splits<wbr />Info</span
+              ><a
+                href="#getKartSplitsInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a
+                  id="getKartSplitsInfo.getKartSplitsInfo-1"
+                  class="tsd-anchor"
+                ></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Kart<wbr />Splits<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_KartSplitsInfo.KartSplitsInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >KartSplitsInfo</a
+                ><a
+                  href="#getKartSplitsInfo.getKartSplitsInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_KartSplitsInfo.KartSplitsInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >KartSplitsInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L29"
+                        >lib/interfaces/Addon.ts:29</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getTrackSegmentsInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Track<wbr />Segments<wbr />Info</span
+              ><a
+                href="#getTrackSegmentsInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a
+                  id="getTrackSegmentsInfo.getTrackSegmentsInfo-1"
+                  class="tsd-anchor"
+                ></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Track<wbr />Segments<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_TrackSegmentsInfo.TrackSegmentsInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >TrackSegmentsInfo</a
+                ><a
+                  href="#getTrackSegmentsInfo.getTrackSegmentsInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_TrackSegmentsInfo.TrackSegmentsInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >TrackSegmentsInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L30"
+                        >lib/interfaces/Addon.ts:30</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getRaceEventInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Race<wbr />Event<wbr />Info</span
+              ><a
+                href="#getRaceEventInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a
+                  id="getRaceEventInfo.getRaceEventInfo-1"
+                  class="tsd-anchor"
+                ></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Race<wbr />Event<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_RaceEventInfo.RaceEventInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >RaceEventInfo</a
+                ><a
+                  href="#getRaceEventInfo.getRaceEventInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_RaceEventInfo.RaceEventInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >RaceEventInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L31"
+                        >lib/interfaces/Addon.ts:31</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getRaceEntriesInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Race<wbr />Entries<wbr />Info</span
+              ><a
+                href="#getRaceEntriesInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a
+                  id="getRaceEntriesInfo.getRaceEntriesInfo-1"
+                  class="tsd-anchor"
+                ></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Race<wbr />Entries<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_RaceEntriesInfo.RaceEntriesInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >RaceEntriesInfo</a
+                ><a
+                  href="#getRaceEntriesInfo.getRaceEntriesInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_RaceEntriesInfo.RaceEntriesInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >RaceEntriesInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L32"
+                        >lib/interfaces/Addon.ts:32</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getRaceSessionInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Race<wbr />Session<wbr />Info</span
+              ><a
+                href="#getRaceSessionInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a
+                  id="getRaceSessionInfo.getRaceSessionInfo-1"
+                  class="tsd-anchor"
+                ></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Race<wbr />Session<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_RaceSessionInfo.RaceSessionInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >RaceSessionInfo</a
+                ><a
+                  href="#getRaceSessionInfo.getRaceSessionInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_RaceSessionInfo.RaceSessionInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >RaceSessionInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L33"
+                        >lib/interfaces/Addon.ts:33</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getRaceLapsInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Race<wbr />Laps<wbr />Info</span
+              ><a
+                href="#getRaceLapsInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a id="getRaceLapsInfo.getRaceLapsInfo-1" class="tsd-anchor"></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Race<wbr />Laps<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_RaceLapsInfo.RaceLapsInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >RaceLapsInfo</a
+                ><a
+                  href="#getRaceLapsInfo.getRaceLapsInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_RaceLapsInfo.RaceLapsInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >RaceLapsInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L34"
+                        >lib/interfaces/Addon.ts:34</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getRaceSplitsInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Race<wbr />Splits<wbr />Info</span
+              ><a
+                href="#getRaceSplitsInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a
+                  id="getRaceSplitsInfo.getRaceSplitsInfo-1"
+                  class="tsd-anchor"
+                ></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Race<wbr />Splits<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_RaceSplitsInfo.RaceSplitsInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >RaceSplitsInfo</a
+                ><a
+                  href="#getRaceSplitsInfo.getRaceSplitsInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_RaceSplitsInfo.RaceSplitsInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >RaceSplitsInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L35"
+                        >lib/interfaces/Addon.ts:35</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getRaceSpeedsInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Race<wbr />Speeds<wbr />Info</span
+              ><a
+                href="#getRaceSpeedsInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a
+                  id="getRaceSpeedsInfo.getRaceSpeedsInfo-1"
+                  class="tsd-anchor"
+                ></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Race<wbr />Speeds<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_RaceSpeedsInfo.RaceSpeedsInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >RaceSpeedsInfo</a
+                ><a
+                  href="#getRaceSpeedsInfo.getRaceSpeedsInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_RaceSpeedsInfo.RaceSpeedsInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >RaceSpeedsInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L36"
+                        >lib/interfaces/Addon.ts:36</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getRaceCommunicationsInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Race<wbr />Communications<wbr />Info</span
+              ><a
+                href="#getRaceCommunicationsInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a
+                  id="getRaceCommunicationsInfo.getRaceCommunicationsInfo-1"
+                  class="tsd-anchor"
+                ></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Race<wbr />Communications<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_RaceCommunicationsInfo.RaceCommunicationsInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >RaceCommunicationsInfo</a
+                ><a
+                  href="#getRaceCommunicationsInfo.getRaceCommunicationsInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_RaceCommunicationsInfo.RaceCommunicationsInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >RaceCommunicationsInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L37"
+                        >lib/interfaces/Addon.ts:37</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getRaceClassificationInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Race<wbr />Classification<wbr />Info</span
+              ><a
+                href="#getRaceClassificationInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a
+                  id="getRaceClassificationInfo.getRaceClassificationInfo-1"
+                  class="tsd-anchor"
+                ></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Race<wbr />Classification<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_RaceClassificationInfo.RaceClassificationInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >RaceClassificationInfo</a
+                ><a
+                  href="#getRaceClassificationInfo.getRaceClassificationInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_RaceClassificationInfo.RaceClassificationInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >RaceClassificationInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L38"
+                        >lib/interfaces/Addon.ts:38</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getRaceTrackPositionsInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Race<wbr />Track<wbr />Positions<wbr />Info</span
+              ><a
+                href="#getRaceTrackPositionsInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a
+                  id="getRaceTrackPositionsInfo.getRaceTrackPositionsInfo-1"
+                  class="tsd-anchor"
+                ></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Race<wbr />Track<wbr />Positions<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_RaceTrackPositionsInfo.RaceTrackPositionsInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >RaceTrackPositionsInfo</a
+                ><a
+                  href="#getRaceTrackPositionsInfo.getRaceTrackPositionsInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_RaceTrackPositionsInfo.RaceTrackPositionsInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >RaceTrackPositionsInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L39"
+                        >lib/interfaces/Addon.ts:39</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getRaceVehiclesDataInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Race<wbr />Vehicles<wbr />Data<wbr />Info</span
+              ><a
+                href="#getRaceVehiclesDataInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a
+                  id="getRaceVehiclesDataInfo.getRaceVehiclesDataInfo-1"
+                  class="tsd-anchor"
+                ></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Race<wbr />Vehicles<wbr />Data<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_RaceVehiclesDataInfo.RaceVehiclesDataInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >RaceVehiclesDataInfo</a
+                ><a
+                  href="#getRaceVehiclesDataInfo.getRaceVehiclesDataInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_RaceVehiclesDataInfo.RaceVehiclesDataInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >RaceVehiclesDataInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L40"
+                        >lib/interfaces/Addon.ts:40</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="getCamerasInfo" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>get<wbr />Cameras<wbr />Info</span
+              ><a
+                href="#getCamerasInfo"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a id="getCamerasInfo.getCamerasInfo-1" class="tsd-anchor"></a
+                ><span class="tsd-kind-call-signature"
+                  >get<wbr />Cameras<wbr />Info</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><a
+                  href="interfaces_SharedFileOut_CamerasInfo.CamerasInfo.html"
+                  class="tsd-signature-type tsd-kind-interface"
+                  >CamerasInfo</a
+                ><a
+                  href="#getCamerasInfo.getCamerasInfo-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <h4 class="tsd-returns-title">
+                  Returns
+                  <a
+                    href="interfaces_SharedFileOut_CamerasInfo.CamerasInfo.html"
+                    class="tsd-signature-type tsd-kind-interface"
+                    >CamerasInfo</a
+                  >
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L41"
+                        >lib/interfaces/Addon.ts:41</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="setVehicle" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>set<wbr />Vehicle</span
+              ><a
+                href="#setVehicle"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a id="setVehicle.setVehicle-1" class="tsd-anchor"></a
+                ><span class="tsd-kind-call-signature">set<wbr />Vehicle</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-kind-parameter">vehicle</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><span class="tsd-signature-type">void</span
+                ><a
+                  href="#setVehicle.setVehicle-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <div class="tsd-parameters">
+                  <h4 class="tsd-parameters-title">Parameters</h4>
+                  <ul class="tsd-parameter-list">
+                    <li>
+                      <span
+                        ><span class="tsd-kind-parameter">vehicle</span>:
+                        <span class="tsd-signature-type">number</span></span
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <h4 class="tsd-returns-title">
+                  Returns <span class="tsd-signature-type">void</span>
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L42"
+                        >lib/interfaces/Addon.ts:42</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+          <section class="tsd-panel tsd-member">
+            <a id="setCamera" class="tsd-anchor"></a>
+            <h3 class="tsd-anchor-link">
+              <span>set<wbr />Camera</span
+              ><a
+                href="#setCamera"
+                aria-label="Permalink"
+                class="tsd-anchor-icon"
+                ><svg viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-anchor"></use></svg
+              ></a>
+            </h3>
+            <ul class="tsd-signatures">
+              <li class="tsd-signature tsd-anchor-link">
+                <a id="setCamera.setCamera-1" class="tsd-anchor"></a
+                ><span class="tsd-kind-call-signature">set<wbr />Camera</span
+                ><span class="tsd-signature-symbol">(</span
+                ><span class="tsd-kind-parameter">camera</span
+                ><span class="tsd-signature-symbol">)</span
+                ><span class="tsd-signature-symbol">: </span
+                ><span class="tsd-signature-type">void</span
+                ><a
+                  href="#setCamera.setCamera-1"
+                  aria-label="Permalink"
+                  class="tsd-anchor-icon"
+                  ><svg viewBox="0 0 24 24">
+                    <use href="../assets/icons.svg#icon-anchor"></use></svg
+                ></a>
+              </li>
+              <li class="tsd-description">
+                <div class="tsd-parameters">
+                  <h4 class="tsd-parameters-title">Parameters</h4>
+                  <ul class="tsd-parameter-list">
+                    <li>
+                      <span
+                        ><span class="tsd-kind-parameter">camera</span>:
+                        <span class="tsd-signature-type">number</span></span
+                      >
+                    </li>
+                  </ul>
+                </div>
+                <h4 class="tsd-returns-title">
+                  Returns <span class="tsd-signature-type">void</span>
+                </h4>
+                <aside class="tsd-sources">
+                  <ul>
+                    <li>
+                      Defined in
+                      <a
+                        href="https://github.com/FynniX/krp-sharedmemory-client/blob/cf56a23/lib/interfaces/Addon.ts#L43"
+                        >lib/interfaces/Addon.ts:43</a
+                      >
+                    </li>
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </section>
+        </section>
+      </div>
+      <div class="col-sidebar">
+        <div class="page-menu">
+          <div class="tsd-navigation settings">
+            <details class="tsd-index-accordion">
+              <summary class="tsd-accordion-summary">
+                <h3>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <use href="../assets/icons.svg#icon-chevronDown"></use></svg
+                  >Settings
+                </h3>
+              </summary>
+              <div class="tsd-accordion-details">
+                <div class="tsd-filter-visibility">
+                  <h4 class="uppercase">Member Visibility</h4>
+                  <form>
+                    <ul id="tsd-filter-options">
+                      <li class="tsd-filter-item">
+                        <label class="tsd-filter-input"
+                          ><input
+                            type="checkbox"
+                            id="tsd-filter-protected"
+                            name="protected"
+                          /><svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 32 32"
+                            aria-hidden="true"
+                          >
+                            <rect
+                              class="tsd-checkbox-background"
+                              width="30"
+                              height="30"
+                              x="1"
+                              y="1"
+                              rx="6"
+                              fill="none"
+                            ></rect>
+                            <path
+                              class="tsd-checkbox-checkmark"
+                              d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
+                              stroke="none"
+                              stroke-width="3.5"
+                              stroke-linejoin="round"
+                              fill="none"
+                            ></path></svg
+                          ><span>Protected</span></label
+                        >
+                      </li>
+                      <li class="tsd-filter-item">
+                        <label class="tsd-filter-input"
+                          ><input
+                            type="checkbox"
+                            id="tsd-filter-private"
+                            name="private"
+                          /><svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 32 32"
+                            aria-hidden="true"
+                          >
+                            <rect
+                              class="tsd-checkbox-background"
+                              width="30"
+                              height="30"
+                              x="1"
+                              y="1"
+                              rx="6"
+                              fill="none"
+                            ></rect>
+                            <path
+                              class="tsd-checkbox-checkmark"
+                              d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
+                              stroke="none"
+                              stroke-width="3.5"
+                              stroke-linejoin="round"
+                              fill="none"
+                            ></path></svg
+                          ><span>Private</span></label
+                        >
+                      </li>
+                      <li class="tsd-filter-item">
+                        <label class="tsd-filter-input"
+                          ><input
+                            type="checkbox"
+                            id="tsd-filter-inherited"
+                            name="inherited"
+                            checked
+                          /><svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 32 32"
+                            aria-hidden="true"
+                          >
+                            <rect
+                              class="tsd-checkbox-background"
+                              width="30"
+                              height="30"
+                              x="1"
+                              y="1"
+                              rx="6"
+                              fill="none"
+                            ></rect>
+                            <path
+                              class="tsd-checkbox-checkmark"
+                              d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
+                              stroke="none"
+                              stroke-width="3.5"
+                              stroke-linejoin="round"
+                              fill="none"
+                            ></path></svg
+                          ><span>Inherited</span></label
+                        >
+                      </li>
+                      <li class="tsd-filter-item">
+                        <label class="tsd-filter-input"
+                          ><input
+                            type="checkbox"
+                            id="tsd-filter-external"
+                            name="external"
+                          /><svg
+                            width="32"
+                            height="32"
+                            viewBox="0 0 32 32"
+                            aria-hidden="true"
+                          >
+                            <rect
+                              class="tsd-checkbox-background"
+                              width="30"
+                              height="30"
+                              x="1"
+                              y="1"
+                              rx="6"
+                              fill="none"
+                            ></rect>
+                            <path
+                              class="tsd-checkbox-checkmark"
+                              d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
+                              stroke="none"
+                              stroke-width="3.5"
+                              stroke-linejoin="round"
+                              fill="none"
+                            ></path></svg
+                          ><span>External</span></label
+                        >
+                      </li>
+                    </ul>
+                  </form>
+                </div>
+                <div class="tsd-theme-toggle">
+                  <h4 class="uppercase">Theme</h4>
+                  <select id="tsd-theme">
+                    <option value="os">OS</option>
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                  </select>
+                </div>
+              </div>
+            </details>
+          </div>
+          <details open class="tsd-index-accordion tsd-page-navigation">
+            <summary class="tsd-accordion-summary">
+              <h3>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <use href="../assets/icons.svg#icon-chevronDown"></use></svg
+                >On This Page
+              </h3>
+            </summary>
+            <div class="tsd-accordion-details">
+              <a href="#connect" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>connect</span></a
+              ><a href="#disconnect" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>disconnect</span></a
+              ><a href="#isConnected" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>is<wbr />Connected</span></a
+              ><a href="#getPluginInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>get<wbr />Plugin<wbr />Info</span></a
+              ><a href="#getKartEventInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>get<wbr />Kart<wbr />Event<wbr />Info</span></a
+              ><a href="#getKartSessionInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>get<wbr />Kart<wbr />Session<wbr />Info</span></a
+              ><a href="#getKartTelemetryInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>get<wbr />Kart<wbr />Telemetry<wbr />Info</span></a
+              ><a href="#getKartLapsInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>get<wbr />Kart<wbr />Laps<wbr />Info</span></a
+              ><a href="#getKartSplitsInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>get<wbr />Kart<wbr />Splits<wbr />Info</span></a
+              ><a href="#getTrackSegmentsInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>get<wbr />Track<wbr />Segments<wbr />Info</span></a
+              ><a href="#getRaceEventInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>get<wbr />Race<wbr />Event<wbr />Info</span></a
+              ><a href="#getRaceEntriesInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>get<wbr />Race<wbr />Entries<wbr />Info</span></a
+              ><a href="#getRaceSessionInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>get<wbr />Race<wbr />Session<wbr />Info</span></a
+              ><a href="#getRaceLapsInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>get<wbr />Race<wbr />Laps<wbr />Info</span></a
+              ><a href="#getRaceSplitsInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>get<wbr />Race<wbr />Splits<wbr />Info</span></a
+              ><a href="#getRaceSpeedsInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>get<wbr />Race<wbr />Speeds<wbr />Info</span></a
+              ><a href="#getRaceCommunicationsInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>get<wbr />Race<wbr />Communications<wbr />Info</span></a
+              ><a href="#getRaceClassificationInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>get<wbr />Race<wbr />Classification<wbr />Info</span></a
+              ><a href="#getRaceTrackPositionsInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span
+                  >get<wbr />Race<wbr />Track<wbr />Positions<wbr />Info</span
+                ></a
+              ><a href="#getRaceVehiclesDataInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span
+                  >get<wbr />Race<wbr />Vehicles<wbr />Data<wbr />Info</span
+                ></a
+              ><a href="#getCamerasInfo" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>get<wbr />Cameras<wbr />Info</span></a
+              ><a href="#setVehicle" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>set<wbr />Vehicle</span></a
+              ><a href="#setCamera" class=""
+                ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                  <use href="../assets/icons.svg#icon-2048"></use></svg
+                ><span>set<wbr />Camera</span></a
+              >
+            </div>
+          </details>
+        </div>
+        <div class="site-menu">
+          <nav class="tsd-navigation">
+            <a href="../index.html"
+              ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
+                <use href="../assets/icons.svg#icon-1"></use></svg
+              ><span>krp-sharedmemory-client</span></a
+            >
+            <ul
+              class="tsd-small-nested-navigation"
+              id="tsd-nav-container"
+              data-base=".."
+            >
+              <li>Loading...</li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="tsd-generator">
+      <p>
+        Generated using
+        <a href="https://typedoc.org/" target="_blank">TypeDoc</a>
+      </p>
+    </div>
+    <div class="overlay"></div>
+  </body>
+</html>

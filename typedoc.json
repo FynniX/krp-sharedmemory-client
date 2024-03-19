@@ -1,0 +1,12 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "name": "krp-sharedmemory-client",
+  "entryPointStrategy": "expand",
+  "entryPoints": ["./lib"],
+  "sort": ["source-order"],
+  "navigationLinks": {
+    "Plugin": "https://github.com/FynniX/krp-sharedmemory-plugin/",
+    "Docs": "https://github.com/FynniX/krp-sharedmemory-client/docs/",
+    "GitHub": "https://github.com/FynniX/krp-sharedmemory-client/"
+  }
+}

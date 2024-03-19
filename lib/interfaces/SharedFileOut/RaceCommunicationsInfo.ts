@@ -2,6 +2,6 @@ import { SPluginsRaceCommunication } from "../SharedFileIn/SPluginsRaceCommunica
 import { BaseInfo } from "./BaseInfo";
 
 export interface RaceCommunicationsInfo extends BaseInfo {
-    _iNumCommunications: number;
-    m_RaceCommunications: SPluginsRaceCommunication[];
+  _iNumCommunications: number;
+  m_RaceCommunications: SPluginsRaceCommunication[];
 }

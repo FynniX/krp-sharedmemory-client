@@ -1,4 +1,4 @@
 export enum TrackSegmentType {
-    STRAIGHT = 0,
-    CURVE = 1
+  STRAIGHT = 0,
+  CURVE = 1,
 }

@@ -18,24 +18,30 @@ import { TrackSegmentsInfo } from "./SharedFileOut/TrackSegmentsInfo";
 import { CamerasInfo } from "./SharedFileOut/CamerasInfo";
 
 export interface Events {
-    connected: () => void;
-    disconnected: (reason: string) => void;
-    pluginInfo: (pluginInfo?: PluginInfo) => void
-    kartEventInfo: (kartEventInfo?: KartEventInfo) => void
-    kartSessionInfo: (kartSessionInfo?: KartSessionInfo) => void
-    kartLapsInfo: (kartLapsInfo?: KartLapsInfo) => void
-    kartSplitsInfo: (kartSplitInfo?: KartSplitsInfo) => void
-    kartTelemetryInfo: (kartTelemetryInfo?: KartTelemetryInfo) => void
-    trackSegmentsInfo: (trackSegmentsInfo?: TrackSegmentsInfo) => void
-    raceEventInfo: (raceEventInfo?: RaceEventInfo) => void
-    raceEntriesInfo: (raceEntriesInfo?: RaceEntriesInfo) => void
-    raceSessionInfo: (raceSessionInfo?: RaceSessionInfo) => void
-    raceLapsInfo: (raceLapInfo?: RaceLapsInfo) => void
-    raceSplitsInfo: (raceSplitInfo?: RaceSplitsInfo) => void
-    raceSpeedsInfo: (raceSpeedsInfo?: RaceSpeedsInfo) => void
-    raceCommunicationsInfo: (raceCommunicationsInfo?: RaceCommunicationsInfo) => void
-    raceClassificationInfo: (raceClassificationInfo?: RaceClassificationInfo) => void
-    raceTrackPositionsInfo: (raceTrackPositionsInfo?: RaceTrackPositionsInfo) => void
-    raceVehiclesDataInfo: (raceVehiclesDataInfo?: RaceVehiclesDataInfo) => void
-    camerasInfo: (camerasInfo?: CamerasInfo) => void
+  connected: () => void;
+  disconnected: (reason: string) => void;
+  pluginInfo: (pluginInfo?: PluginInfo) => void;
+  kartEventInfo: (kartEventInfo?: KartEventInfo) => void;
+  kartSessionInfo: (kartSessionInfo?: KartSessionInfo) => void;
+  kartLapsInfo: (kartLapsInfo?: KartLapsInfo) => void;
+  kartSplitsInfo: (kartSplitInfo?: KartSplitsInfo) => void;
+  kartTelemetryInfo: (kartTelemetryInfo?: KartTelemetryInfo) => void;
+  trackSegmentsInfo: (trackSegmentsInfo?: TrackSegmentsInfo) => void;
+  raceEventInfo: (raceEventInfo?: RaceEventInfo) => void;
+  raceEntriesInfo: (raceEntriesInfo?: RaceEntriesInfo) => void;
+  raceSessionInfo: (raceSessionInfo?: RaceSessionInfo) => void;
+  raceLapsInfo: (raceLapInfo?: RaceLapsInfo) => void;
+  raceSplitsInfo: (raceSplitInfo?: RaceSplitsInfo) => void;
+  raceSpeedsInfo: (raceSpeedsInfo?: RaceSpeedsInfo) => void;
+  raceCommunicationsInfo: (
+    raceCommunicationsInfo?: RaceCommunicationsInfo,
+  ) => void;
+  raceClassificationInfo: (
+    raceClassificationInfo?: RaceClassificationInfo,
+  ) => void;
+  raceTrackPositionsInfo: (
+    raceTrackPositionsInfo?: RaceTrackPositionsInfo,
+  ) => void;
+  raceVehiclesDataInfo: (raceVehiclesDataInfo?: RaceVehiclesDataInfo) => void;
+  camerasInfo: (camerasInfo?: CamerasInfo) => void;
 }
