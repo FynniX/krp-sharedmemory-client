@@ -2,6 +2,6 @@ import { SPluginsRaceClassification } from "../SharedFileIn/SPluginsRaceClassifi
 import { SPluginsRaceClassificationEntry } from "../SharedFileIn/SPluginsRaceClassificationEntry";
 import { BaseInfo } from "./BaseInfo";
 export interface RaceClassificationInfo extends BaseInfo {
-  m_RaceClassification: SPluginsRaceClassification;
-  m_RaceClassificationEntries: SPluginsRaceClassificationEntry[];
+    m_RaceClassification: SPluginsRaceClassification;
+    m_RaceClassificationEntries: SPluginsRaceClassificationEntry[];
 }

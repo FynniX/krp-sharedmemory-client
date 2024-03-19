@@ -1,3 +1,3 @@
 export interface BaseInfo {
-  m_id: number;
+    m_id: number;
 }
