@@ -33,6 +33,17 @@
                     'AdditionalOptions': [ '-std:c++17', ]
                 },
             }
+        },
+        {
+            'target_name': 'action_after_build',
+            'type': 'none',
+            'dependencies': ['krp-sharedmemory-client-native'],
+            "copies": [
+                {
+                    "files": [ "./build/Release/krp-sharedmemory-client-native.node" ],
+                    "destination": "./"
+                },
+            ]
         }
     ]
 }
