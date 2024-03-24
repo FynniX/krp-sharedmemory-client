@@ -1,9 +1,9 @@
-import { TypedEmitter } from "tiny-typed-emitter";
+import { Emitter } from "./emitter";
 import { addon } from "./binding";
 import { ConfigDelay } from "./enums/ConfigDelay";
 import { GameState } from "./enums/GameState";
 export const MINIMUM_PLUGIN_VERSION = 12;
-export class Wrapper extends TypedEmitter {
+export class Wrapper extends Emitter {
     /**
      * Creates an instance of wrapper.
      * @constructor
