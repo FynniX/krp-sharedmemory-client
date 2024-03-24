@@ -1,4 +1,4 @@
-import { Emitter } from "./emitter";
+import { TypedEmitter } from "tiny-typed-emitter";
 import { Events } from "./interfaces/Events";
 
 import { KartEventInfo } from "./interfaces/SharedFileOut/KartEventInfo";
@@ -26,7 +26,7 @@ import { GameState } from "./enums/GameState";
 
 export const MINIMUM_PLUGIN_VERSION = 12;
 
-export class Wrapper extends Emitter<Events> {
+export class Wrapper extends TypedEmitter<Events> {
   /**
    * Weather or not the wrapper is activated.
    * @type {boolean}

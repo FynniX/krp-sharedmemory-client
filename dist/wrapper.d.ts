@@ -1,4 +1,4 @@
-import { Emitter } from "./emitter";
+import { TypedEmitter } from "tiny-typed-emitter";
 import { Events } from "./interfaces/Events";
 import { KartEventInfo } from "./interfaces/SharedFileOut/KartEventInfo";
 import { KartLapsInfo } from "./interfaces/SharedFileOut/KartLapsInfo";
@@ -20,7 +20,7 @@ import { TrackSegmentsInfo } from "./interfaces/SharedFileOut/TrackSegmentsInfo"
 import { CamerasInfo } from "./interfaces/SharedFileOut/CamerasInfo";
 import { Config } from "./interfaces/Config";
 export declare const MINIMUM_PLUGIN_VERSION = 12;
-export declare class Wrapper extends Emitter<Events> {
+export declare class Wrapper extends TypedEmitter<Events> {
     /**
      * Weather or not the wrapper is activated.
      * @type {boolean}

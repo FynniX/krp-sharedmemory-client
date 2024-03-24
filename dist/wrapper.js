@@ -1,19 +1,22 @@
-import { Emitter } from "./emitter";
-import { addon } from "./binding";
-import { ConfigDelay } from "./enums/ConfigDelay";
-import { GameState } from "./enums/GameState";
-export const MINIMUM_PLUGIN_VERSION = 12;
-export class Wrapper extends Emitter {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Wrapper = exports.MINIMUM_PLUGIN_VERSION = void 0;
+const tiny_typed_emitter_1 = require("tiny-typed-emitter");
+const binding_1 = require("./binding");
+const ConfigDelay_1 = require("./enums/ConfigDelay");
+const GameState_1 = require("./enums/GameState");
+exports.MINIMUM_PLUGIN_VERSION = 12;
+class Wrapper extends tiny_typed_emitter_1.TypedEmitter {
     /**
      * Creates an instance of wrapper.
      * @constructor
      * @param {Config} config - Configuration
      */
     constructor(config = {
-        ConnectDelay: ConfigDelay.SLOWEST,
-        ReconnectDelay: ConfigDelay.SLOWEST,
-        KeepAliveDelay: ConfigDelay.SLOWEST,
-        UpdateDelay: ConfigDelay.FAST,
+        ConnectDelay: ConfigDelay_1.ConfigDelay.SLOWEST,
+        ReconnectDelay: ConfigDelay_1.ConfigDelay.SLOWEST,
+        KeepAliveDelay: ConfigDelay_1.ConfigDelay.SLOWEST,
+        UpdateDelay: ConfigDelay_1.ConfigDelay.FAST,
         logging: false,
     }) {
         super();
@@ -68,7 +71,7 @@ export class Wrapper extends Emitter {
      * @returns {boolean}
      */
     isConnected() {
-        return addon.isConnected();
+        return binding_1.addon.isConnected();
     }
     /**
      * Tries to connect the wrapper.
@@ -78,7 +81,7 @@ export class Wrapper extends Emitter {
     connect() {
         if (!this.activated || this.isConnected())
             return;
-        if (addon.connect()) {
+        if (binding_1.addon.connect()) {
             this.config.logging && console.log("CONNECTED");
             this.emit("connected");
             // Start events
@@ -111,7 +114,7 @@ export class Wrapper extends Emitter {
      * @returns
      */
     disconnect(reason = "") {
-        addon.disconnect();
+        binding_1.addon.disconnect();
         this.config.logging && console.log("DISCONNECTED");
         this.emit("disconnected", reason);
         if (!this.activated)
@@ -128,19 +131,19 @@ export class Wrapper extends Emitter {
         if (!this.activated || !this.isConnected())
             return;
         const lastId = ((_a = this.pluginInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
-        this.pluginInfo = addon.getPluginInfo();
+        this.pluginInfo = binding_1.addon.getPluginInfo();
         lastId !== ((_b = this.pluginInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("pluginInfo", this.pluginInfo);
         // Disconnect when GameState = CLOSED
-        if (this.pluginInfo.m_GameState === GameState.CLOSED) {
+        if (this.pluginInfo.m_GameState === GameState_1.GameState.CLOSED) {
             this.disconnect();
             return;
         }
         // Check version of plugin
-        if (this.pluginInfo.m_PluginVersion < MINIMUM_PLUGIN_VERSION) {
+        if (this.pluginInfo.m_PluginVersion < exports.MINIMUM_PLUGIN_VERSION) {
             this.config.logging &&
-                console.log(`Plugin version ${this.pluginInfo.m_PluginVersion} < ${MINIMUM_PLUGIN_VERSION}!`);
-            this.disconnect(`Plugin version ${this.pluginInfo.m_PluginVersion} < ${MINIMUM_PLUGIN_VERSION}!`);
+                console.log(`Plugin version ${this.pluginInfo.m_PluginVersion} < ${exports.MINIMUM_PLUGIN_VERSION}!`);
+            this.disconnect(`Plugin version ${this.pluginInfo.m_PluginVersion} < ${exports.MINIMUM_PLUGIN_VERSION}!`);
             return;
         }
         setTimeout(() => this.keepAlive(), this.config.KeepAliveDelay);
@@ -155,7 +158,7 @@ export class Wrapper extends Emitter {
         if (!this.activated || !this.isConnected())
             return;
         const lastId = ((_a = this.kartEventInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
-        this.kartEventInfo = addon.getKartEventInfo();
+        this.kartEventInfo = binding_1.addon.getKartEventInfo();
         lastId !== ((_b = this.kartEventInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("kartEventInfo", this.kartEventInfo);
         setTimeout(() => this.updateKartEventInfo(), this.config.UpdateDelay);
@@ -170,7 +173,7 @@ export class Wrapper extends Emitter {
         if (!this.activated || !this.isConnected())
             return;
         const lastId = ((_a = this.kartSessionInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
-        this.kartSessionInfo = addon.getKartSessionInfo();
+        this.kartSessionInfo = binding_1.addon.getKartSessionInfo();
         lastId !== ((_b = this.kartSessionInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("kartSessionInfo", this.kartSessionInfo);
         setTimeout(() => this.updateKartSessionInfo(), this.config.UpdateDelay);
@@ -185,7 +188,7 @@ export class Wrapper extends Emitter {
         if (!this.activated || !this.isConnected())
             return;
         const lastId = ((_a = this.kartLapsInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
-        this.kartLapsInfo = addon.getKartLapsInfo();
+        this.kartLapsInfo = binding_1.addon.getKartLapsInfo();
         lastId !== ((_b = this.kartLapsInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("kartLapsInfo", this.kartLapsInfo);
         setTimeout(() => this.updateKartLapsInfo(), this.config.UpdateDelay);
@@ -200,7 +203,7 @@ export class Wrapper extends Emitter {
         if (!this.activated || !this.isConnected())
             return;
         const lastId = ((_a = this.kartSplitsInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
-        this.kartSplitsInfo = addon.getKartSplitsInfo();
+        this.kartSplitsInfo = binding_1.addon.getKartSplitsInfo();
         lastId !== ((_b = this.kartSplitsInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("kartSplitsInfo", this.kartSplitsInfo);
         setTimeout(() => this.updateKartSplitsInfo(), this.config.UpdateDelay);
@@ -215,7 +218,7 @@ export class Wrapper extends Emitter {
         if (!this.activated || !this.isConnected())
             return;
         const lastId = ((_a = this.kartTelemetryInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
-        this.kartTelemetryInfo = addon.getKartTelemetryInfo();
+        this.kartTelemetryInfo = binding_1.addon.getKartTelemetryInfo();
         lastId !== ((_b = this.kartTelemetryInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("kartTelemetryInfo", this.kartTelemetryInfo);
         setTimeout(() => this.updateKartTelemetryInfo(), this.config.UpdateDelay);
@@ -230,7 +233,7 @@ export class Wrapper extends Emitter {
         if (!this.activated || !this.isConnected())
             return;
         const lastId = ((_a = this.trackSegmentsInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
-        this.trackSegmentsInfo = addon.getTrackSegmentsInfo();
+        this.trackSegmentsInfo = binding_1.addon.getTrackSegmentsInfo();
         lastId !== ((_b = this.trackSegmentsInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("trackSegmentsInfo", this.trackSegmentsInfo);
         setTimeout(() => this.updateTrackSegmentsInfo(), this.config.UpdateDelay);
@@ -245,7 +248,7 @@ export class Wrapper extends Emitter {
         if (!this.activated || !this.isConnected())
             return;
         const lastId = ((_a = this.raceEventInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
-        this.raceEventInfo = addon.getRaceEventInfo();
+        this.raceEventInfo = binding_1.addon.getRaceEventInfo();
         lastId !== ((_b = this.raceEventInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("raceEventInfo", this.raceEventInfo);
         setTimeout(() => this.updateRaceEventInfo(), this.config.UpdateDelay);
@@ -260,7 +263,7 @@ export class Wrapper extends Emitter {
         if (!this.activated || !this.isConnected())
             return;
         const lastId = ((_a = this.raceEntriesInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
-        this.raceEntriesInfo = addon.getRaceEntriesInfo();
+        this.raceEntriesInfo = binding_1.addon.getRaceEntriesInfo();
         lastId !== ((_b = this.raceEntriesInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("raceEntriesInfo", this.raceEntriesInfo);
         setTimeout(() => this.updateRaceEntriesInfo(), this.config.UpdateDelay);
@@ -275,7 +278,7 @@ export class Wrapper extends Emitter {
         if (!this.activated || !this.isConnected())
             return;
         const lastId = ((_a = this.raceSessionInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
-        this.raceSessionInfo = addon.getRaceSessionInfo();
+        this.raceSessionInfo = binding_1.addon.getRaceSessionInfo();
         lastId !== ((_b = this.raceSessionInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("raceSessionInfo", this.raceSessionInfo);
         setTimeout(() => this.updateRaceSessionInfo(), this.config.UpdateDelay);
@@ -290,7 +293,7 @@ export class Wrapper extends Emitter {
         if (!this.activated || !this.isConnected())
             return;
         const lastId = ((_a = this.raceLapsInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
-        this.raceLapsInfo = addon.getRaceLapsInfo();
+        this.raceLapsInfo = binding_1.addon.getRaceLapsInfo();
         lastId !== ((_b = this.raceLapsInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("raceLapsInfo", this.raceLapsInfo);
         setTimeout(() => this.updateRaceLapsInfo(), this.config.UpdateDelay);
@@ -305,7 +308,7 @@ export class Wrapper extends Emitter {
         if (!this.activated || !this.isConnected())
             return;
         const lastId = ((_a = this.raceSplitsInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
-        this.raceSplitsInfo = addon.getRaceSplitsInfo();
+        this.raceSplitsInfo = binding_1.addon.getRaceSplitsInfo();
         lastId !== ((_b = this.raceSplitsInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("raceSplitsInfo", this.raceSplitsInfo);
         setTimeout(() => this.updateRaceSplitsInfo(), this.config.UpdateDelay);
@@ -320,7 +323,7 @@ export class Wrapper extends Emitter {
         if (!this.activated || !this.isConnected())
             return;
         const lastId = ((_a = this.raceSpeedsInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
-        this.raceSpeedsInfo = addon.getRaceSpeedsInfo();
+        this.raceSpeedsInfo = binding_1.addon.getRaceSpeedsInfo();
         lastId !== ((_b = this.raceSpeedsInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("raceSpeedsInfo", this.raceSpeedsInfo);
         setTimeout(() => this.updateRaceSpeedsInfo(), this.config.UpdateDelay);
@@ -335,7 +338,7 @@ export class Wrapper extends Emitter {
         if (!this.activated || !this.isConnected())
             return;
         const lastId = ((_a = this.raceClassificationInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
-        this.raceClassificationInfo = addon.getRaceClassificationInfo();
+        this.raceClassificationInfo = binding_1.addon.getRaceClassificationInfo();
         lastId !== ((_b = this.raceClassificationInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("raceClassificationInfo", this.raceClassificationInfo);
         setTimeout(() => this.updateRaceClassificationInfo(), this.config.UpdateDelay);
@@ -350,7 +353,7 @@ export class Wrapper extends Emitter {
         if (!this.activated || !this.isConnected())
             return;
         const lastId = ((_a = this.raceTrackPositionsInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
-        this.raceTrackPositionsInfo = addon.getRaceTrackPositionsInfo();
+        this.raceTrackPositionsInfo = binding_1.addon.getRaceTrackPositionsInfo();
         lastId !== ((_b = this.raceTrackPositionsInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("raceTrackPositionsInfo", this.raceTrackPositionsInfo);
         setTimeout(() => this.updateRaceTrackPositionsInfo(), this.config.UpdateDelay);
@@ -365,7 +368,7 @@ export class Wrapper extends Emitter {
         if (!this.activated || !this.isConnected())
             return;
         const lastId = ((_a = this.raceVehiclesDataInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
-        this.raceVehiclesDataInfo = addon.getRaceVehiclesDataInfo();
+        this.raceVehiclesDataInfo = binding_1.addon.getRaceVehiclesDataInfo();
         lastId !== ((_b = this.raceVehiclesDataInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("raceVehiclesDataInfo", this.raceVehiclesDataInfo);
         setTimeout(() => this.updateRaceVehiclesDataInfo(), this.config.UpdateDelay);
@@ -380,7 +383,7 @@ export class Wrapper extends Emitter {
         if (!this.activated || !this.isConnected())
             return;
         const lastId = ((_a = this.camerasInfo) === null || _a === void 0 ? void 0 : _a.m_id) || -1;
-        this.camerasInfo = addon.getCamerasInfo();
+        this.camerasInfo = binding_1.addon.getCamerasInfo();
         lastId !== ((_b = this.camerasInfo) === null || _b === void 0 ? void 0 : _b.m_id) &&
             this.emit("camerasInfo", this.camerasInfo);
         setTimeout(() => this.updateCamerasInfo(), this.config.UpdateDelay);
@@ -393,7 +396,7 @@ export class Wrapper extends Emitter {
     spectateVehicle(vehicle) {
         if (!this.activated || !this.isConnected())
             return;
-        addon.setVehicle(vehicle);
+        binding_1.addon.setVehicle(vehicle);
     }
     /**
      * Set the camera to spectate.
@@ -403,7 +406,8 @@ export class Wrapper extends Emitter {
     spectateCamera(camera) {
         if (!this.activated || !this.isConnected())
             return;
-        addon.setCamera(camera);
+        binding_1.addon.setCamera(camera);
     }
 }
-export default Wrapper;
+exports.Wrapper = Wrapper;
+exports.default = Wrapper;

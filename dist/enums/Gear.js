@@ -1,4 +1,7 @@
-export var Gear;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Gear = void 0;
+var Gear;
 (function (Gear) {
     Gear[Gear["REVERSE"] = -1] = "REVERSE";
     Gear[Gear["NEUTRAL"] = 0] = "NEUTRAL";
@@ -8,4 +11,4 @@ export var Gear;
     Gear[Gear["FOURTH"] = 4] = "FOURTH";
     Gear[Gear["FIFTH"] = 5] = "FIFTH";
     Gear[Gear["SIXTH"] = 6] = "SIXTH";
-})(Gear || (Gear = {}));
+})(Gear || (exports.Gear = Gear = {}));
