@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.RaceSessionType = void 0;
-var RaceSessionType;
+export var RaceSessionType;
 (function (RaceSessionType) {
     RaceSessionType[RaceSessionType["WAITING"] = 0] = "WAITING";
     RaceSessionType[RaceSessionType["PRACTISE"] = 1] = "PRACTISE";
@@ -11,4 +8,4 @@ var RaceSessionType;
     RaceSessionType[RaceSessionType["SECOND_CHANCE"] = 5] = "SECOND_CHANCE";
     RaceSessionType[RaceSessionType["PREFINAL"] = 6] = "PREFINAL";
     RaceSessionType[RaceSessionType["FINAL"] = 7] = "FINAL";
-})(RaceSessionType || (exports.RaceSessionType = RaceSessionType = {}));
+})(RaceSessionType || (RaceSessionType = {}));

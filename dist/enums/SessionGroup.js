@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.SessionGroup = void 0;
-var SessionGroup;
+export var SessionGroup;
 (function (SessionGroup) {
     SessionGroup[SessionGroup["A"] = 0] = "A";
     SessionGroup[SessionGroup["B"] = 1] = "B";
@@ -29,4 +26,4 @@ var SessionGroup;
     SessionGroup[SessionGroup["X"] = 23] = "X";
     SessionGroup[SessionGroup["Y"] = 24] = "Y";
     SessionGroup[SessionGroup["Z"] = 25] = "Z";
-})(SessionGroup || (exports.SessionGroup = SessionGroup = {}));
+})(SessionGroup || (SessionGroup = {}));

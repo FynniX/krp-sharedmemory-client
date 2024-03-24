@@ -2,7 +2,8 @@
   "compilerOptions": {
     "declaration": true,
     "lib": ["esnext"],
-    "module": "commonjs",
+    "module": "esnext",
+    "moduleResolution": "Bundler",
     "outDir": "./dist",
     "rootDir": "./lib",
     "strict": true,
