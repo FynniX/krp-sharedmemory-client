@@ -1,6 +1,6 @@
 {
   "name": "krp-sharedmemory-client",
-  "version": "2.0.9",
+  "version": "2.1.0",
   "description": "Node.js Wrapper to communicate with Kart Racing Pro Client.",
   "main": "dist/wrapper.js",
   "types": "dist/wrapper.d.ts",
