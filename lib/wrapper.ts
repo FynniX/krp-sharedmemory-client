@@ -158,7 +158,7 @@ export class Wrapper extends TypedEmitter<Events> {
     config: Config = {
       ConnectDelay: ConfigDelay.SLOWEST,
       ReconnectDelay: ConfigDelay.SLOWEST,
-      KeepAliveDelay: ConfigDelay.SLOWEST,
+      KeepAliveDelay: ConfigDelay.SLOW,
       UpdateDelay: ConfigDelay.FAST,
       logging: false,
     },
@@ -274,8 +274,7 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private keepAlive(): void {
     if (!this.activated || !this.isConnected()) return;
-
-    const lastId = this.pluginInfo?.m_id || -1;
+    const lastId = this.pluginInfo?.m_id ?? -1;
     this.pluginInfo = addon.getPluginInfo();
     lastId !== this.pluginInfo?.m_id &&
       this.emit("pluginInfo", this.pluginInfo);
@@ -308,7 +307,7 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateKartEventInfo() {
     if (!this.activated || !this.isConnected()) return;
-    const lastId = this.kartEventInfo?.m_id || -1;
+    const lastId = this.kartEventInfo?.m_id ?? -1;
     this.kartEventInfo = addon.getKartEventInfo();
     lastId !== this.kartEventInfo?.m_id &&
       this.emit("kartEventInfo", this.kartEventInfo);
@@ -322,7 +321,7 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateKartSessionInfo() {
     if (!this.activated || !this.isConnected()) return;
-    const lastId = this.kartSessionInfo?.m_id || -1;
+    const lastId = this.kartSessionInfo?.m_id ?? -1;
     this.kartSessionInfo = addon.getKartSessionInfo();
     lastId !== this.kartSessionInfo?.m_id &&
       this.emit("kartSessionInfo", this.kartSessionInfo);
@@ -336,7 +335,7 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateKartLapsInfo() {
     if (!this.activated || !this.isConnected()) return;
-    const lastId = this.kartLapsInfo?.m_id || -1;
+    const lastId = this.kartLapsInfo?.m_id ?? -1;
     this.kartLapsInfo = addon.getKartLapsInfo();
     lastId !== this.kartLapsInfo?.m_id &&
       this.emit("kartLapsInfo", this.kartLapsInfo);
@@ -350,7 +349,7 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateKartSplitsInfo() {
     if (!this.activated || !this.isConnected()) return;
-    const lastId = this.kartSplitsInfo?.m_id || -1;
+    const lastId = this.kartSplitsInfo?.m_id ?? -1;
     this.kartSplitsInfo = addon.getKartSplitsInfo();
     lastId !== this.kartSplitsInfo?.m_id &&
       this.emit("kartSplitsInfo", this.kartSplitsInfo);
@@ -364,7 +363,7 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateKartTelemetryInfo() {
     if (!this.activated || !this.isConnected()) return;
-    const lastId = this.kartTelemetryInfo?.m_id || -1;
+    const lastId = this.kartTelemetryInfo?.m_id ?? -1;
     this.kartTelemetryInfo = addon.getKartTelemetryInfo();
     lastId !== this.kartTelemetryInfo?.m_id &&
       this.emit("kartTelemetryInfo", this.kartTelemetryInfo);
@@ -378,7 +377,7 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateTrackSegmentsInfo() {
     if (!this.activated || !this.isConnected()) return;
-    const lastId = this.trackSegmentsInfo?.m_id || -1;
+    const lastId = this.trackSegmentsInfo?.m_id ?? -1;
     this.trackSegmentsInfo = addon.getTrackSegmentsInfo();
     lastId !== this.trackSegmentsInfo?.m_id &&
       this.emit("trackSegmentsInfo", this.trackSegmentsInfo);
@@ -392,7 +391,7 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceEventInfo() {
     if (!this.activated || !this.isConnected()) return;
-    const lastId = this.raceEventInfo?.m_id || -1;
+    const lastId = this.raceEventInfo?.m_id ?? -1;
     this.raceEventInfo = addon.getRaceEventInfo();
     lastId !== this.raceEventInfo?.m_id &&
       this.emit("raceEventInfo", this.raceEventInfo);
@@ -406,7 +405,7 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceEntriesInfo() {
     if (!this.activated || !this.isConnected()) return;
-    const lastId = this.raceEntriesInfo?.m_id || -1;
+    const lastId = this.raceEntriesInfo?.m_id ?? -1;
     this.raceEntriesInfo = addon.getRaceEntriesInfo();
     lastId !== this.raceEntriesInfo?.m_id &&
       this.emit("raceEntriesInfo", this.raceEntriesInfo);
@@ -420,7 +419,7 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceSessionInfo() {
     if (!this.activated || !this.isConnected()) return;
-    const lastId = this.raceSessionInfo?.m_id || -1;
+    const lastId = this.raceSessionInfo?.m_id ?? -1;
     this.raceSessionInfo = addon.getRaceSessionInfo();
     lastId !== this.raceSessionInfo?.m_id &&
       this.emit("raceSessionInfo", this.raceSessionInfo);
@@ -434,7 +433,7 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceLapsInfo() {
     if (!this.activated || !this.isConnected()) return;
-    const lastId = this.raceLapsInfo?.m_id || -1;
+    const lastId = this.raceLapsInfo?.m_id ?? -1;
     this.raceLapsInfo = addon.getRaceLapsInfo();
     lastId !== this.raceLapsInfo?.m_id &&
       this.emit("raceLapsInfo", this.raceLapsInfo);
@@ -448,7 +447,7 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceSplitsInfo() {
     if (!this.activated || !this.isConnected()) return;
-    const lastId = this.raceSplitsInfo?.m_id || -1;
+    const lastId = this.raceSplitsInfo?.m_id ?? -1;
     this.raceSplitsInfo = addon.getRaceSplitsInfo();
     lastId !== this.raceSplitsInfo?.m_id &&
       this.emit("raceSplitsInfo", this.raceSplitsInfo);
@@ -462,7 +461,7 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceSpeedsInfo() {
     if (!this.activated || !this.isConnected()) return;
-    const lastId = this.raceSpeedsInfo?.m_id || -1;
+    const lastId = this.raceSpeedsInfo?.m_id ?? -1;
     this.raceSpeedsInfo = addon.getRaceSpeedsInfo();
     lastId !== this.raceSpeedsInfo?.m_id &&
       this.emit("raceSpeedsInfo", this.raceSpeedsInfo);
@@ -476,7 +475,7 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceClassificationInfo() {
     if (!this.activated || !this.isConnected()) return;
-    const lastId = this.raceClassificationInfo?.m_id || -1;
+    const lastId = this.raceClassificationInfo?.m_id ?? -1;
     this.raceClassificationInfo = addon.getRaceClassificationInfo();
     lastId !== this.raceClassificationInfo?.m_id &&
       this.emit("raceClassificationInfo", this.raceClassificationInfo);
@@ -493,7 +492,7 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceTrackPositionsInfo() {
     if (!this.activated || !this.isConnected()) return;
-    const lastId = this.raceTrackPositionsInfo?.m_id || -1;
+    const lastId = this.raceTrackPositionsInfo?.m_id ?? -1;
     this.raceTrackPositionsInfo = addon.getRaceTrackPositionsInfo();
     lastId !== this.raceTrackPositionsInfo?.m_id &&
       this.emit("raceTrackPositionsInfo", this.raceTrackPositionsInfo);
@@ -510,7 +509,7 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateRaceVehiclesDataInfo() {
     if (!this.activated || !this.isConnected()) return;
-    const lastId = this.raceVehiclesDataInfo?.m_id || -1;
+    const lastId = this.raceVehiclesDataInfo?.m_id ?? -1;
     this.raceVehiclesDataInfo = addon.getRaceVehiclesDataInfo();
     lastId !== this.raceVehiclesDataInfo?.m_id &&
       this.emit("raceVehiclesDataInfo", this.raceVehiclesDataInfo);
@@ -527,7 +526,7 @@ export class Wrapper extends TypedEmitter<Events> {
    */
   private updateCamerasInfo() {
     if (!this.activated || !this.isConnected()) return;
-    const lastId = this.camerasInfo?.m_id || -1;
+    const lastId = this.camerasInfo?.m_id ?? -1;
     this.camerasInfo = addon.getCamerasInfo();
     lastId !== this.camerasInfo?.m_id &&
       this.emit("camerasInfo", this.camerasInfo);
