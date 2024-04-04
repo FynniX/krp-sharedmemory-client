@@ -24,7 +24,7 @@ import { Config } from "./interfaces/Config";
 import { ConfigDelay } from "./enums/ConfigDelay";
 import { GameState } from "./enums/GameState";
 
-export const MINIMUM_PLUGIN_VERSION = 12;
+export const MINIMUM_PLUGIN_VERSION = 15;
 
 export class Wrapper extends TypedEmitter<Events> {
   /**
